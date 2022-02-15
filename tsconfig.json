@@ -1,4 +1,5 @@
 {
+  "target": "es5",
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": { "resolveJsonModule": true },
   "include": ["src/**/*"],

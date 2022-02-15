@@ -1,28 +1,50 @@
 <script lang="ts">
-  export let name: string;
+  import { Router, Route, Link } from "svelte-navigator";
+  import { AppBar, SoftwareKey } from "./components";
+  import { Home, Room } from "./routes";
+  import { onMount, onDestroy } from 'svelte';
 
-  console.log('Hello world!');
+  export let appBar;
+  export let softwareKey;
+
+  export const getParentProp = () => {
+    return {appBar, softwareKey};
+  }
+
+  onMount(() => {
+    console.log('onMount', 'App');
+  });
+
 </script>
 
-<main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte
-    apps.
-  </p>
-</main>
+<Router>
+  <AppBar bind:this={appBar} />
+  <main>
+    <Route path="index.html" let:location let:navigate>
+      <svelte:component this="{Home}" {location} {navigate} {getParentProp}/>
+    </Route>
+    <Route path="room" let:location let:navigate>
+      <svelte:component this="{Room}" {location} {navigate} {getParentProp}/>
+    </Route>
+  </main>
+  <SoftwareKey bind:this={softwareKey} />
+</Router>
 
 <style>
   main {
+    top: 28px;
+    margin: 0px;
+    padding: 0px;
+    position: fixed;
     text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
+    width: 100%;
+    height: 236px;
+    overflow: scroll;
   }
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-weight: 100;
+  @media screen and (orientation: landscape) {
+    main {
+      height: 156px;
+    }
   }
 </style>

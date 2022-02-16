@@ -16,16 +16,14 @@
   }
 </script>
 
-<div class="software-key">
+<div class="kai-software-key">
   <div class="left">{left}</div>
   <div class="center">{center}</div>
   <div class="right">{right}</div>
 </div>
 
 <style>
-  .software-key {
-    padding: 0;
-    margin: 0;
+  .kai-software-key {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -37,18 +35,18 @@
     height: 30px;
     width: 100%;
   }
-  .software-key > .left {
+  .kai-software-key > .left {
     text-align: left;
     padding-left: 4px;
     width: calc(33% - 4px);
   }
-  .software-key > .center {
+  .kai-software-key > .center {
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
     width: 34%;
   }
-  .software-key > .right {
+  .kai-software-key > .right {
     text-align: right;
     padding-right: 4px;
     width: calc(33% - 4px);

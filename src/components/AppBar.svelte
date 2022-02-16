@@ -6,23 +6,18 @@
   }
 </script>
 
-<div class="app-bar">{title}</div>
+<div class="kai-app-bar">{title}</div>
 
 <style>
-  .app-bar {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    top: 0px;
-    position: fixed;
+  .kai-app-bar {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 28px;
+    height: 28px;
+    padding: 0 4px;
     color: #ffffff;
     background-color: #ff3e00;
+    font-weight: normal;
     text-transform: uppercase;
-    font-weight: 600;
-    height: 28px;
-    width: 100%;
   }
 </style>

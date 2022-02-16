@@ -6,6 +6,11 @@ body {
   background-color: #ffffff;
 }
 
+div {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   color: #333;
   margin: 0;

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
+  import Dialog from '../components/Dialog.svelte';
   import { onMount, onDestroy } from 'svelte';
 
   export let location: any;
@@ -8,10 +9,28 @@
   export let getParentProp: Function;
 
   let name: string = 'Home';
+  let dialog: any;
 
   let navOptions = {
     softLeftListener: function(evt) {
-      console.log('softLeftListener', name);
+      navInstance.detachListener();
+      dialog = new Dialog({
+        target: document.body,
+        props: {
+          onEnter: (evt) => {
+            dialog.$destroy();
+            navInstance.attachListener();
+            dialog = null;
+          },
+          onBackspace: (evt) => {
+            evt.preventDefault();
+            evt.stopPropagation();
+            dialog.$destroy();
+            navInstance.attachListener();
+            dialog = null;
+          }
+        }
+      });
     },
     softRightListener: function(evt) {
       console.log('softRightListener', name);
@@ -31,7 +50,7 @@
     console.log('onMount', name);
     const { appBar, softwareKey } = getParentProp();
     appBar.setTitleText(name);
-    softwareKey.setText({ left: `${name} L`, center: `${name} C`, right: `${name} R` });
+    softwareKey.setText({ left: `Dialog L`, center: `${name} C`, right: `${name} R` });
     navInstance.attachListener();
   });
 

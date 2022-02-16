@@ -13,15 +13,15 @@
     softLeftCallback: function(evt) {
       console.log('softLeftCallback', name);
     },
-    softRightCallback: function(evt) {
-      console.log('softRightCallback', name);
+    softRightListener: function(evt) {
+      console.log('softRightListener', name);
     },
-    enterCallback: function(evt) {
-      console.log('enterCallback', name);
+    enterListener: function(evt) {
+      console.log('enterListener', name);
       goto('room');
     },
-    backspaceCallback: function(evt) {
-      console.log('backspaceCallback', name);
+    backspaceListener: function(evt) {
+      console.log('backspaceListener', name);
     }
   };
 

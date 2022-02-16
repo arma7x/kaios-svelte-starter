@@ -12,17 +12,17 @@
   let navOptions = {
     verticalNavClass: 'vertClass',
     horizontalNavClass: 'horzClass',
-    softLeftCallback: function(evt) {
-      console.log('softLeftCallback', name);
+    softLeftListener: function(evt) {
+      console.log('softLeftListener', name);
     },
-    softRightCallback: function(evt) {
-      console.log('softRightCallback', name);
+    softRightListener: function(evt) {
+      console.log('softRightListener', name);
     },
-    enterCallback: function(evt) {
-      console.log('enterCallback', name);
+    enterListener: function(evt) {
+      console.log('enterListener', name);
     },
-    backspaceCallback: function(evt) {
-      console.log('backspaceCallback', name);
+    backspaceListener: function(evt) {
+      console.log('backspaceListener', name);
       evt.preventDefault();
       goto(-1);
     }

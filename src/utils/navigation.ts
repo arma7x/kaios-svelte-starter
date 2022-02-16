@@ -2,32 +2,32 @@ function keydownEventHandler(evt, scope) {
   switch (evt.key) {
     case 'Backspace':
     case 'EndCall':
-      scope.backspaceCallback(evt);
+      scope.backspaceListener(evt);
       break;
     case 'SoftLeft':
     case 'PageUp':
-      scope.softLeftCallback(evt);
+      scope.softLeftListener(evt);
       evt.preventDefault();
       break;
     case 'SoftRight':
     case 'PageDown':
-      scope.softRightCallback(evt);
+      scope.softRightListener(evt);
       evt.preventDefault();
       break;
     case 'Enter':
-      scope.enterCallback(evt);
+      scope.enterListener(evt);
       break;
     case 'ArrowUp':
-      scope.arrowUpCallback(evt);
+      scope.arrowUpListener(evt);
       break;
     case 'ArrowDown':
-      scope.arrowDownCallback(evt);
+      scope.arrowDownListener(evt);
       break;
     case 'ArrowLeft':
-      scope.arrowLeftCallback(evt);
+      scope.arrowLeftListener(evt);
       break;
     case 'ArrowRight':
-      scope.arrowRightCallback(evt);
+      scope.arrowRightListener(evt);
       break;
   }
 }
@@ -39,34 +39,34 @@ class KaiNavigator {
   verticalNavClass: string;
   horizontalNavIndex: number = -1;
   horizontalNavClass: string;
-  arrowUpCallback: Function = (evt) => {
+  arrowUpListener: Function = (evt) => {
     if (this.verticalNavClass) {
       evt.preventDefault();
       this.navigateListNav(-1);
     }
   };
-  arrowDownCallback: Function = (evt) => {
+  arrowDownListener: Function = (evt) => {
     if (this.verticalNavClass) {
       evt.preventDefault();
       this.navigateListNav(-1);
     }
   };
-  arrowLeftCallback: Function = (evt) => {
+  arrowLeftListener: Function = (evt) => {
     if (this.horizontalNavClass) {
       evt.preventDefault();
       this.navigateTabNav(-1);
     }
   };
-  arrowRightCallback: Function = (evt) => {
+  arrowRightListener: Function = (evt) => {
     if (this.horizontalNavClass) {
       evt.preventDefault();
       this.navigateTabNav(1);
     }
   };
-  softLeftCallback: Function = (evt) => {};
-  softRightCallback: Function = (evt) => {};
-  enterCallback: Function = (evt) => {};
-  backspaceCallback: Function = (evt) => {};
+  softLeftListener: Function = (evt) => {};
+  softRightListener: Function = (evt) => {};
+  enterListener: Function = (evt) => {};
+  backspaceListener: Function = (evt) => {};
  
   constructor(opts = {}) {
     for(const x in opts) {

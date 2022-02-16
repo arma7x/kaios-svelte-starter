@@ -10,8 +10,8 @@
   let name: string = 'Home';
 
   let navOptions = {
-    softLeftCallback: function(evt) {
-      console.log('softLeftCallback', name);
+    softLeftListener: function(evt) {
+      console.log('softLeftListener', name);
     },
     softRightListener: function(evt) {
       console.log('softRightListener', name);

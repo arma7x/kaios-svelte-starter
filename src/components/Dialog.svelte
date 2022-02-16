@@ -38,11 +38,11 @@
     },
     enterListener: function(evt) {
       console.log('enterListener', title);
-      onEnter(evt);
+      onEnter(evt, {title});
     },
     backspaceListener: function(evt) {
       console.log('backspaceListener', title);
-      onBackspace(evt);
+      onBackspace(evt, {title});
     }
   };
 

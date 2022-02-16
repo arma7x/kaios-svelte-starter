@@ -17,12 +17,14 @@
       dialog = new Dialog({
         target: document.body,
         props: {
-          onEnter: (evt) => {
+          onEnter: (evt, scope) => {
+            console.log('onEnter', scope.title);
             dialog.$destroy();
             navInstance.attachListener();
             dialog = null;
           },
-          onBackspace: (evt) => {
+          onBackspace: (evt, scope) => {
+            console.log('onBackspace', scope.title);
             evt.preventDefault();
             evt.stopPropagation();
             dialog.$destroy();

@@ -38,13 +38,7 @@
     position: fixed;
     text-align: center;
     width: 100%;
-    height: 236px;
+    height: calc(100% - 58px);
     overflow: scroll;
-  }
-
-  @media screen and (orientation: landscape) {
-    main {
-      height: 156px;
-    }
   }
 </style>

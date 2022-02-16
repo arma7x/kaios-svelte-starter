@@ -67,7 +67,7 @@
 <svelte:options accessors/>
 
 <div class="kai-dialog">
-  <div class="kai-dialog-container">
+  <div class="kai-dialog-backdrop">
     <div class="kai-dialog-header">{title}</div>
     <div class="kai-dialog-body">Svelte is a radical new approach to building user interfaces. Whereas traditional frameworks like React and Vue do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app.</div>
   </div>
@@ -81,14 +81,14 @@
     position: fixed;
     background-color: rgba(0, 0, 0, 0.4);
   }
-  .kai-dialog > .kai-dialog-container {
+  .kai-dialog > .kai-dialog-backdrop {
     width: 100%;
     max-height: calc(100% - 68px);
     bottom: 30px;
     position: fixed;
     background-color: #ffffff;
   }
-  .kai-dialog > .kai-dialog-container > .kai-dialog-header {
+  .kai-dialog > .kai-dialog-backdrop > .kai-dialog-header {
     width: 100%;
     text-align: center;
     vertical-align: middle;
@@ -99,7 +99,7 @@
     background-color: #ff3e00;
     font-weight: normal;
   }
-  .kai-dialog > .kai-dialog-container > .kai-dialog-body {
+  .kai-dialog > .kai-dialog-backdrop > .kai-dialog-body {
     padding: 4px;
   }
 </style>

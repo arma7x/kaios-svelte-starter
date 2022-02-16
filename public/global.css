@@ -1,3 +1,10 @@
+@-moz-document url-prefix() {
+  html,
+  body {
+    scrollbar-width: none;
+  }
+}
+
 html,
 body {
   position: relative;

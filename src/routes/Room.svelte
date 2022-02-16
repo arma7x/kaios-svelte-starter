@@ -34,9 +34,7 @@
     console.log('onMount', name);
     const { appBar, softwareKey } = getParentProp();
     appBar.setTitleText(name);
-    softwareKey.setLeftText(`${name} L`);
-    softwareKey.setCenterText(`${name} C`);
-    softwareKey.setRightText(`${name} R`);
+    softwareKey.setText({ left: `${name} L`, center: `${name} C`, right: `${name} R` });
     navInstance.attachListener();
   });
 

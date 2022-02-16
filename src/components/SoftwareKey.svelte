@@ -2,6 +2,7 @@
   export let left: string = 'Left';
   export let center: string = 'Center';
   export let right: string = 'Right';
+  export let isInvert: bool = false;
 
   export function setLeftText(text) {
     left = text;
@@ -14,9 +15,27 @@
   export function setRightText(text) {
     right = text;
   }
+
+  export function setText(opts = {}) {
+    if (opts['left'] != null)
+      setLeftText(opts['left']);
+    if (opts['center'] != null)
+      setCenterText(opts['center']);
+    if (opts['right'] != null)
+      setRightText(opts['right']);
+  }
+
+  export function normalStyle() {
+    isInvert = false;
+  }
+
+  export function invertStyle() {
+    isInvert = true;
+  }
+  
 </script>
 
-<div class="kai-software-key">
+<div class="kai-software-key{isInvert ? ' invert' : ''}">
   <div class="left">{left}</div>
   <div class="center">{center}</div>
   <div class="right">{right}</div>
@@ -35,6 +54,10 @@
     height: 30px;
     width: 100%;
   }
+  .kai-software-key.invert {
+    color: #ffffff;
+    background-color: #000000;
+  }
   .kai-software-key > .left {
     text-align: left;
     padding-left: 4px;
@@ -43,7 +66,7 @@
   .kai-software-key > .center {
     text-align: center;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 500;
     width: 34%;
   }
   .kai-software-key > .right {

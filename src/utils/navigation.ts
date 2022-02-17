@@ -46,6 +46,13 @@ function isElementInViewport(el, marginTop = 0, marginBottom = 0) {
   );
 }
 
+function dispatchScroll(target,newScrollTop) {
+  target.scrollTop = newScrollTop;
+  const e = document.createEvent("UIEvents");
+  e.initUIEvent("scroll", true, true, window, 1);
+  target.dispatchEvent(e);
+}
+
 class KaiNavigator {
   private init: boolean = false;
   private eventHandler: any; // actual is EventListenerObject, any to suppress error
@@ -133,11 +140,7 @@ class KaiNavigator {
         marginTop = parseFloat(cursor.parentElement.getAttribute("data-pad-top"));
       if (cursor.parentElement.getAttribute("data-pad-bottom"))
         marginBottom = parseFloat(cursor.parentElement.getAttribute("data-pad-bottom"));
-      cursor.parentElement.scrollTo({
-        top: cursor.offsetTop - ((cursor.parentElement.clientHeight - marginTop - marginBottom) / 2),
-        left: 0,
-      });
-      // cursor.scrollIntoView({ block: "start", inline: "nearest", behavior: "smooth" })
+      dispatchScroll(cursor.parentElement, cursor.offsetTop - ((cursor.parentElement.clientHeight - marginTop - marginBottom) / 2));
     }
   }
 

@@ -33,6 +33,8 @@ function keydownEventHandler(evt, scope) {
 }
 
 function isElementInViewport(el, marginTop = 0, marginBottom = 0) {
+  // console.dir(el);
+  // console.dir(el.parentElement);
   if (el.parentElement.getAttribute("data-pad-top"))
     marginTop = parseFloat(el.parentElement.getAttribute("data-pad-top"));
   if (el.parentElement.getAttribute("data-pad-bottom"))
@@ -126,8 +128,18 @@ class KaiNavigator {
     if (currentIndex > -1 && nav.length > 1) {
       nav[currentIndex].classList.remove('focus');
     }
-    if (!isElementInViewport(cursor))
-      cursor.scrollIntoView({ block: "center", inline: "nearest", behavior: "smooth" })
+    if (!isElementInViewport(cursor)) {
+      var marginTop = 0, marginBottom = 0;
+      if (cursor.parentElement.getAttribute("data-pad-top"))
+        marginTop = parseFloat(cursor.parentElement.getAttribute("data-pad-top"));
+      if (cursor.parentElement.getAttribute("data-pad-bottom"))
+        marginBottom = parseFloat(cursor.parentElement.getAttribute("data-pad-bottom"));
+      cursor.parentElement.scrollTo({
+        top: cursor.offsetTop - ((cursor.parentElement.clientHeight - marginTop - marginBottom) / 2),
+        left: 0,
+      });
+      // cursor.scrollIntoView({ block: "start", inline: "nearest", behavior: "smooth" })
+    }
   }
 
   attachListener() {

@@ -68,7 +68,7 @@
 
 </script>
 
-<main data-pad-top="28" data-pad-bottom="30">
+<main id="debug" data-pad-top="28" data-pad-bottom="30">
   <ListView className="homeNav" title="Title Text" subtitle="Subtitle text is here"/>
   <ListView className="homeNav" title="Title Text No Subtitle 1"/>
   <ListView className="homeNav" title="Title Text No Subtitle 2"/>
@@ -80,4 +80,7 @@
 </main>
 
 <style>
+  main {
+    overflow: hidden;
+  }
 </style>

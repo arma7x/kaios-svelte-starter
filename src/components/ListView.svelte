@@ -41,7 +41,7 @@
     font-size: 14px;
     text-align: start;
     height: 16px;
-    width: 100%;
+    width: calc(100% - 4px);
     white-space: pre-wrap!important;
     word-break: break-word!important;
     overflow: hidden;

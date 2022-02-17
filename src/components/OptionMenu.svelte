@@ -1,10 +1,14 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import SoftwareKey from './SoftwareKey.svelte';
+  import ListView from './ListView.svelte';
   import { createKaiNavigator } from '../utils/navigation';
 
+  const navClass: string = 'optionMenuNav';
+
   export let title: string = 'Dialog';
-  export let body: string = '';
+  export let cursor: number = 0; // TODO
+  export let option: { title: string, subtitle: string }[]; // TODO
   export let softKeyLeftText: string = '';
   export let softKeyCenterText: string = 'Close';
   export let softKeyRightText: string = '';
@@ -20,26 +24,7 @@
   }
 
   let navOptions = {
-    arrowUpListener: function(evt) {
-      document.getElementsByClassName('kai-dialog-body')[0].scrollTop -= 20;
-      evt.preventDefault();
-      evt.stopPropagation();
-    },
-    arrowDownListener: function(evt) {
-      document.getElementsByClassName('kai-dialog-body')[0].scrollTop += 20;
-      evt.preventDefault();
-      evt.stopPropagation();
-    },
-    arrowLeftListener: function(evt) {
-      document.getElementsByClassName('kai-dialog-body')[0].scrollLeft -= 20;
-      evt.preventDefault();
-      evt.stopPropagation();
-    },
-    arrowRightListener: function(evt) {
-      document.getElementsByClassName('kai-dialog-body')[0].scrollLeft += 20;
-      evt.preventDefault();
-      evt.stopPropagation();
-    },
+    verticalNavClass: navClass,
     softkeyLeftListener: function(evt) {
       if (onSoftkeyLeft == null)
         return;
@@ -54,13 +39,13 @@
       if (onEnter == null)
         return;
       console.log('enterListener', title);
-      onEnter(evt);
+      onEnter(evt, {index: this.verticalNavIndex});
     },
     backspaceListener: function(evt) {
       if (onBackspace == null)
         return;
       console.log('backspaceListener', title);
-      onBackspace(evt);
+      onBackspace(evt, {index: this.verticalNavIndex});
     }
   };
 
@@ -90,22 +75,28 @@
 
 <svelte:options accessors/>
 
-<div class="kai-dialog">
-  <div class="kai-dialog-content">
-    <div class="kai-dialog-header">{title}</div>
-    <div class="kai-dialog-body">{body}</div>
+<div class="kai-option-menu">
+  <div class="kai-option-menu-content">
+    <div class="kai-option-menu-header">{title}</div>
+    <div class="kai-option-menu-body" data-pad-top="66" data-pad-bottom="30">
+      <ListView className="{navClass}" title="Option Menu 1"  subtitle="Option menu 1 subtitle" />
+      <ListView className="{navClass}" title="Option Menu 2"  subtitle="Option menu 2 subtitle" />
+      <ListView className="{navClass}" title="Option Menu 3"  subtitle="Option menu 3 subtitle" />
+      <ListView className="{navClass}" title="Option Menu 4"  subtitle="Option menu 4 subtitle" />
+      <ListView className="{navClass}" title="Option Menu 5"  subtitle="Option menu 5 subtitle" />
+    </div>
   </div>
 </div>
 
 <style>
-  .kai-dialog {
+  .kai-option-menu {
     width: 100%;
     height: calc(100% - 30px);
     bottom: 30px;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.4);
   }
-  .kai-dialog > .kai-dialog-content {
+  .kai-option-menu > .kai-option-menu-content {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -114,7 +105,7 @@
     position: fixed;
     background-color: #ffffff;
   }
-  .kai-dialog > .kai-dialog-content > .kai-dialog-header {
+  .kai-option-menu > .kai-option-menu-content > .kai-option-menu-header {
     width: calc(100% - 8px);
     text-align: center;
     vertical-align: middle;
@@ -125,8 +116,8 @@
     background-color: #cccccc;
     font-weight: normal;
   }
-  .kai-dialog > .kai-dialog-content > .kai-dialog-body {
-    padding: 4px;
+  .kai-option-menu > .kai-option-menu-content > .kai-option-menu-body {
+    width: 100%;
     max-height: calc(100% - 96px);
     overflow: scroll;
   }

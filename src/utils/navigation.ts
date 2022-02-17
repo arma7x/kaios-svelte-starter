@@ -33,8 +33,6 @@ function keydownEventHandler(evt, scope) {
 }
 
 function isElementInViewport(el, marginTop = 0, marginBottom = 0) {
-  // console.dir(el);
-  // console.dir(el.parentElement);
   if (el.parentElement.getAttribute("data-pad-top"))
     marginTop = parseFloat(el.parentElement.getAttribute("data-pad-top"));
   if (el.parentElement.getAttribute("data-pad-bottom"))
@@ -49,6 +47,7 @@ function isElementInViewport(el, marginTop = 0, marginBottom = 0) {
 }
 
 class KaiNavigator {
+  private init: boolean = false;
   private eventHandler: any; // actual is EventListenerObject, any to suppress error
   target: string;
   verticalNavIndex: number = -1;
@@ -144,6 +143,10 @@ class KaiNavigator {
 
   attachListener() {
     document.addEventListener('keydown', this.eventHandler);
+    if (!this.init)
+      this.init = true;
+    else
+      return;
     setTimeout(() => {
       if (this.verticalNavClass != null)
         this.navigateListNav(1);

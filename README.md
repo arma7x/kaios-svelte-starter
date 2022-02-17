@@ -30,3 +30,4 @@ A simple starter template for building a KaiOS app using Svelte and TypeScript.
 . Checkbox
 . Radio
 . Range Slider
+. Toaster

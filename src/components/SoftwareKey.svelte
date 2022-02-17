@@ -59,7 +59,7 @@
     background-color: #000000;
   }
   .kai-software-key > .left {
-    text-align: left;
+    text-align: start;
     padding-left: 4px;
     width: calc(33% - 4px);
   }
@@ -70,7 +70,7 @@
     width: 34%;
   }
   .kai-software-key > .right {
-    text-align: right;
+    text-align: end;
     padding-right: 4px;
     width: calc(33% - 4px);
   }

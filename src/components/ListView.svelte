@@ -7,7 +7,7 @@
 
 <div class="kai-list-view {className ? className : ''}" on:click={onClick}>
   <div class="kai-list-view-content">
-    <h4>{title}</h4>
+    <p>{title}</p>
     {#if subtitle}<small>{subtitle}</small>{/if}
   </div>
   <span class="kai-icon-arrow"></span>
@@ -33,18 +33,19 @@
     align-items: start;
   }
 
-  .kai-list-view.focus,
-  .kai-list-view.focus > .kai-list-view-content > h4,
-  .kai-list-view.focus > .kai-list-view-content > small {
-    background-color: #ff3e00;
-    color: #ffffff;
-  }
-
-  .kai-list-view > .kai-list-view-content > h4 {
+  .kai-list-view > .kai-list-view-content > p {
     padding: 0px;
-    margin: 0px;
+    margin: 0px 4px 0px 0px;
     font-weight: 500;
     color: #484848;
+    font-size: 16px;
+    text-align: start;
+    height: 18px;
+    width: 100%;
+    white-space: pre-wrap!important;
+    word-break: break-word!important;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .kai-list-view > .kai-list-view-content > small {
@@ -52,5 +53,12 @@
     margin: 4px 0px 0px 0px;
     font-weight: 400;
     color: #6a6a6a;
+  }
+
+  .kai-list-view.focus,
+  .kai-list-view.focus > .kai-list-view-content > p,
+  .kai-list-view.focus > .kai-list-view-content > small {
+    background-color: #ff3e00;
+    color: #ffffff;
   }
 </style>

@@ -79,7 +79,7 @@
 <main id="home-screen" data-pad-top="28" data-pad-bottom="30">
   <ListView className="{navClass}" title="Title Text" subtitle="Goto Room" onClick={() => onClickHandler('room')}/>
   <Separator title="Separator 1" />
-  <ListView className="{navClass}" title="Title Text No Subtitle 1"/>
+  <ListView className="{navClass}" title="Qq Yy Pp Gg Jj Test Overflow Test Overflow Test Overflow"/>
   <ListView className="{navClass}" title="Title Text No Subtitle 2"/>
   <Separator title="Separator 2" />
   <ListView className="{navClass}" title="Title Text No Subtitle 3"/>

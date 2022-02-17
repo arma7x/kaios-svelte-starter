@@ -32,6 +32,7 @@
 
 <style>
   main {
+    display: flex;
     top: 28px;
     margin: 0px;
     padding: 0px;

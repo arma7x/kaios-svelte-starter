@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import { SoftwareKey } from "../components";
+  import SoftwareKey from './SoftwareKey.svelte';
   import { createKaiNavigator } from '../utils/navigation';
 
   export let title: string = 'Dialog';
@@ -76,7 +76,6 @@
         left: softKeyLeftText,
         center: softKeyCenterText,
         right: softKeyRightText
-        }
       }
     });
   })

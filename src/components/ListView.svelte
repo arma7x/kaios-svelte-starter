@@ -34,7 +34,8 @@
   }
 
   .kai-list-view.focus,
-  .kai-list-view.focus > .kai-list-view-content > h4 {
+  .kai-list-view.focus > .kai-list-view-content > h4,
+  .kai-list-view.focus > .kai-list-view-content > small {
     background-color: #ff3e00;
     color: #ffffff;
   }
@@ -50,5 +51,6 @@
     padding: 0px;
     margin: 4px 0px 0px 0px;
     font-weight: 400;
+    color: #6a6a6a;
   }
 </style>

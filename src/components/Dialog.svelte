@@ -8,10 +8,10 @@
   export let softKeyLeftText: string = '';
   export let softKeyCenterText: string = 'Close';
   export let softKeyRightText: string = '';
-  export let onEnter: Function;
-  export let onBackspace: Function;
-  export let onSoftkeyLeft: Function;
-  export let onSoftkeyRight: Function;
+  export let onEnter: Function = () => {};
+  export let onBackspace: Function = () => {};
+  export let onSoftkeyLeft: Function = () => {};
+  export let onSoftkeyRight: Function = () => {};
 
   let softwareKey: SoftwareKey;
 

@@ -12,12 +12,13 @@
   let dialog: any;
 
   let navOptions = {
-    softLeftListener: function(evt) {
+    softkeyLeftListener: function(evt) {
       navInstance.detachListener();
       dialog = new Dialog({
         target: document.body,
         props: {
           title: 'Intro',
+          body: `Svelte is a radical new approach to building user interfaces. Whereas traditional frameworks like React and Vue do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app. Instead of using techniques like virtual DOM diffing, Svelte writes code that surgically updates the DOM when the state of your app changes. We're proud that Svelte was recently voted the most loved web framework with the most satisfied developers in a pair of industry surveys. We think you'll love it too. Read the introductory blog post to learn more.`,
           softKeyCenterText: 'hide',
           onEnter: (evt, scope) => {
             console.log('onEnter', scope.title);
@@ -36,8 +37,8 @@
         }
       });
     },
-    softRightListener: function(evt) {
-      console.log('softRightListener', name);
+    softkeyRightListener: function(evt) {
+      console.log('softkeyRightListener', name);
     },
     enterListener: function(evt) {
       console.log('enterListener', name);

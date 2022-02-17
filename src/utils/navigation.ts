@@ -6,12 +6,12 @@ function keydownEventHandler(evt, scope) {
       break;
     case 'SoftLeft':
     case 'PageUp':
-      scope.softLeftListener(evt);
+      scope.softkeyLeftListener(evt);
       evt.preventDefault();
       break;
     case 'SoftRight':
     case 'PageDown':
-      scope.softRightListener(evt);
+      scope.softkeyRightListener(evt);
       evt.preventDefault();
       break;
     case 'Enter':
@@ -63,8 +63,8 @@ class KaiNavigator {
       this.navigateTabNav(1);
     }
   };
-  softLeftListener: Function = (evt) => {};
-  softRightListener: Function = (evt) => {};
+  softkeyLeftListener: Function = (evt) => {};
+  softkeyRightListener: Function = (evt) => {};
   enterListener: Function = (evt) => {};
   backspaceListener: Function = (evt) => {};
  

@@ -4,11 +4,14 @@
   import { createKaiNavigator } from '../utils/navigation';
 
   export let title: string = 'Dialog';
+  export let body: string = '';
   export let softKeyLeftText: string = '';
   export let softKeyCenterText: string = 'Close';
   export let softKeyRightText: string = '';
   export let onEnter: Function;
   export let onBackspace: Function;
+  export let onSoftkeyLeft: Function;
+  export let onSoftkeyRight: Function;
 
   let softwareKey: SoftwareKey;
 
@@ -37,17 +40,25 @@
       evt.preventDefault();
       evt.stopPropagation();
     },
-    softLeftListener: function(evt) {
-      console.log('softLeftListener', title);
+    softkeyLeftListener: function(evt) {
+      if (onSoftkeyLeft == null)
+        return;
+      console.log('softkeyLeftListener', title);
     },
-    softRightListener: function(evt) {
-      console.log('softRightListener', title);
+    softkeyRightListener: function(evt) {
+      if (onSoftkeyRight == null)
+        return;
+      console.log('softkeyRightListener', title);
     },
     enterListener: function(evt) {
+      if (onEnter == null)
+        return;
       console.log('enterListener', title);
       onEnter(evt, {title});
     },
     backspaceListener: function(evt) {
+      if (onBackspace == null)
+        return;
       console.log('backspaceListener', title);
       onBackspace(evt, {title});
     }
@@ -74,9 +85,9 @@
 <svelte:options accessors/>
 
 <div class="kai-dialog">
-  <div class="kai-dialog-backdrop">
+  <div class="kai-dialog-content">
     <div class="kai-dialog-header">{title}</div>
-    <div class="kai-dialog-body">Svelte is a radical new approach to building user interfaces. Whereas traditional frameworks like React and Vue do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app. Instead of using techniques like virtual DOM diffing, Svelte writes code that surgically updates the DOM when the state of your app changes. We're proud that Svelte was recently voted the most loved web framework with the most satisfied developers in a pair of industry surveys. We think you'll love it too. Read the introductory blog post to learn more.</div>
+    <div class="kai-dialog-body">{body}</div>
   </div>
 </div>
 
@@ -88,7 +99,7 @@
     position: fixed;
     background-color: rgba(0, 0, 0, 0.4);
   }
-  .kai-dialog > .kai-dialog-backdrop {
+  .kai-dialog > .kai-dialog-content {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -97,7 +108,7 @@
     position: fixed;
     background-color: #ffffff;
   }
-  .kai-dialog > .kai-dialog-backdrop > .kai-dialog-header {
+  .kai-dialog > .kai-dialog-content > .kai-dialog-header {
     width: calc(100% - 8px);
     text-align: center;
     vertical-align: middle;
@@ -108,7 +119,7 @@
     background-color: #ff3e00;
     font-weight: normal;
   }
-  .kai-dialog > .kai-dialog-backdrop > .kai-dialog-body {
+  .kai-dialog > .kai-dialog-content > .kai-dialog-body {
     padding: 4px;
     max-height: calc(100% - 96px);
     overflow: scroll;

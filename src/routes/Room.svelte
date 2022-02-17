@@ -12,11 +12,11 @@
   let navOptions = {
     verticalNavClass: 'vertClass',
     horizontalNavClass: 'horzClass',
-    softLeftListener: function(evt) {
-      console.log('softLeftListener', name);
+    softkeyLeftListener: function(evt) {
+      console.log('softkeyLeftListener', name);
     },
-    softRightListener: function(evt) {
-      console.log('softRightListener', name);
+    softkeyRightListener: function(evt) {
+      console.log('softkeyRightListener', name);
     },
     enterListener: function(evt) {
       console.log('enterListener', name);

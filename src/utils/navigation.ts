@@ -32,6 +32,20 @@ function keydownEventHandler(evt, scope) {
   }
 }
 
+function isElementInViewport(el, marginTop = 0, marginBottom = 0) {
+  if (el.parentElement.getAttribute("data-pad-top"))
+    marginTop = parseFloat(el.parentElement.getAttribute("data-pad-top"));
+  if (el.parentElement.getAttribute("data-pad-bottom"))
+    marginBottom = parseFloat(el.parentElement.getAttribute("data-pad-bottom"));
+  const rect = el.getBoundingClientRect();
+  return (
+      rect.top >= 0 + marginTop &&
+      rect.left >= 0 &&
+      rect.bottom <= ((window.innerHeight || document.documentElement.clientHeight) - marginBottom) && /* or $(window).height() */
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+  );
+}
+
 class KaiNavigator {
   private eventHandler: any; // actual is EventListenerObject, any to suppress error
   target: string;
@@ -112,6 +126,8 @@ class KaiNavigator {
     if (currentIndex > -1 && nav.length > 1) {
       nav[currentIndex].classList.remove('focus');
     }
+    if (!isElementInViewport(cursor))
+      cursor.scrollIntoView({ block: "center", inline: "nearest", behavior: "smooth" })
   }
 
   attachListener() {

@@ -1,19 +1,19 @@
 <script lang="ts">
-  export let left: string = 'Left';
-  export let center: string = 'Center';
-  export let right: string = 'Right';
+  export let leftText: string = 'Left';
+  export let centerText: string = 'Center';
+  export let rightText: string = 'Right';
   export let isInvert: bool = false;
 
   export function setLeftText(text) {
-    left = text;
+    leftText = text;
   }
 
   export function setCenterText(text) {
-    center = text;
+    centerText = text;
   }
 
   export function setRightText(text) {
-    right = text;
+    rightText = text;
   }
 
   export function setText(opts = {}) {
@@ -36,9 +36,9 @@
 </script>
 
 <div class="kai-software-key{isInvert ? ' invert' : ''}">
-  <div class="left">{left}</div>
-  <div class="center">{center}</div>
-  <div class="right">{right}</div>
+  <div class="left">{leftText}</div>
+  <div class="center">{centerText}</div>
+  <div class="right">{rightText}</div>
 </div>
 
 <style>

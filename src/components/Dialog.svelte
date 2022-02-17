@@ -69,9 +69,16 @@
   onMount(() => {
     console.log('onMount', title);
     navInstance.attachListener();
-    softwareKey = new SoftwareKey({target: document.body});
-    softwareKey.setText({ left: '', center: softKeyCenterText, right: '' });
-    softwareKey.invertStyle();
+    softwareKey = new SoftwareKey({
+      target: document.body,
+      props: {
+        isInvert: true,
+        left: softKeyLeftText,
+        center: softKeyCenterText,
+        right: softKeyRightText
+        }
+      }
+    });
   })
 
   onDestroy(() => {

@@ -37,7 +37,7 @@
     padding: 0px;
     margin: 0px 4px 0px 0px;
     font-weight: 400;
-    color: #0C0C0C;
+    color: #313131;
     font-size: 14px;
     text-align: start;
     height: 16px;
@@ -56,9 +56,14 @@
     color: #6a6a6a;
   }
 
+  .kai-list-view > span {
+    color: #313131;
+  }
+
   .kai-list-view.focus,
   .kai-list-view.focus > .kai-list-view-content > p,
-  .kai-list-view.focus > .kai-list-view-content > small {
+  .kai-list-view.focus > .kai-list-view-content > small,
+  .kai-list-view.focus > span {
     background-color: #ff3e00;
     color: #ffffff;
   }

@@ -112,9 +112,10 @@
     line-height: 28px;
     height: 28px;
     padding: 0 4px;
-    color: #0C0C0C;
+    color: #313131;
     background-color: #cccccc;
     font-weight: normal;
+    font-weight: 200;
   }
   .kai-option-menu > .kai-option-menu-content > .kai-option-menu-body {
     width: 100%;

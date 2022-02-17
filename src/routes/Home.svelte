@@ -17,6 +17,8 @@
       dialog = new Dialog({
         target: document.body,
         props: {
+          title: 'Intro',
+          softKeyCenterText: 'hide',
           onEnter: (evt, scope) => {
             console.log('onEnter', scope.title);
             dialog.$destroy();

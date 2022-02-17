@@ -18,20 +18,22 @@
 
   let navOptions = {
     arrowUpListener: function(evt) {
-      document.getElementsByClassName('kai-dialog-body')[0].scrollTop -= 20
+      document.getElementsByClassName('kai-dialog-body')[0].scrollTop -= 20;
       evt.preventDefault();
       evt.stopPropagation();
     },
     arrowDownListener: function(evt) {
-      document.getElementsByClassName('kai-dialog-body')[0].scrollTop += 20
+      document.getElementsByClassName('kai-dialog-body')[0].scrollTop += 20;
       evt.preventDefault();
       evt.stopPropagation();
     },
     arrowLeftListener: function(evt) {
+      document.getElementsByClassName('kai-dialog-body')[0].scrollLeft -= 20;
       evt.preventDefault();
       evt.stopPropagation();
     },
     arrowRightListener: function(evt) {
+      document.getElementsByClassName('kai-dialog-body')[0].scrollLeft += 20;
       evt.preventDefault();
       evt.stopPropagation();
     },

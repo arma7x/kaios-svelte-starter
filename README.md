@@ -1,3 +1,4 @@
+
 # kaios-svelte-starter
 
 A simple starter template for building a KaiOS app using Svelte and TypeScript.
@@ -11,3 +12,20 @@ A simple starter template for building a KaiOS app using Svelte and TypeScript.
 1. Connect your device to your computer and make sure it appears in WebIDE.
 2. `npm run build`
 3. In WebIDE, load the `/public` folder as a packaged app.
+4. Or, `npm run dev` then visit `localhost:port/index.html`
+
+### TODO
+. ~~Dialog~~
+. List
+. Option Menu
+. Single Selector(Radio)
+. Multi Selector(Checkbox)
+. Date Selector
+. Time Selector
+. Loading Progress
+. Button
+. InputText
+. TextArea
+. Checkbox
+. Radio
+. Range Slider

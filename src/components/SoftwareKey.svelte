@@ -35,7 +35,7 @@
   
 </script>
 
-<div class="kai-software-key{isInvert ? ' invert' : ''}">
+<div class="kai-software-key {isInvert ? 'invert' : ''}">
   <div class="left">{leftText}</div>
   <div class="center">{centerText}</div>
   <div class="right">{rightText}</div>

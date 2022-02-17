@@ -67,7 +67,7 @@
   let navInstance = createKaiNavigator(navOptions);
 
   onMount(() => {
-    console.log('onMount', title, softKeyCenterText);
+    console.log('onMount', title);
     navInstance.attachListener();
     softwareKey = new SoftwareKey({
       target: document.body,

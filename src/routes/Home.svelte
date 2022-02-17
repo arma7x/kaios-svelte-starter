@@ -92,7 +92,7 @@
 
 <style>
   #home-screen {
-    overflow: hidden;
+    overflow: scroll;
     width: 100%;
   }
 </style>

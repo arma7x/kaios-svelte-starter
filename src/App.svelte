@@ -20,7 +20,7 @@
 <Router>
   <AppBar bind:this={appBar} />
   <main>
-    <Route path="index.html" let:location let:navigate>
+    <Route primary={false} path="index.html" let:location let:navigate>
       <svelte:component this="{Home}" {location} {navigate} {getParentProp}/>
     </Route>
     <Route path="room" let:location let:navigate>

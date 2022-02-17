@@ -36,11 +36,11 @@
   .kai-list-view > .kai-list-view-content > p {
     padding: 0px;
     margin: 0px 4px 0px 0px;
-    font-weight: 500;
-    color: #484848;
-    font-size: 16px;
+    font-weight: 400;
+    color: #0C0C0C;
+    font-size: 14px;
     text-align: start;
-    height: 18px;
+    height: 16px;
     width: 100%;
     white-space: pre-wrap!important;
     word-break: break-word!important;
@@ -51,7 +51,8 @@
   .kai-list-view > .kai-list-view-content > small {
     padding: 0px;
     margin: 4px 0px 0px 0px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: lighter;
     color: #6a6a6a;
   }
 

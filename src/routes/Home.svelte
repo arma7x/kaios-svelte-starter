@@ -5,6 +5,8 @@
   import ListView from '../components/ListView.svelte';
   import { onMount, onDestroy } from 'svelte';
 
+  const navClass: string = 'homeNav';
+
   export let location: any;
   export let navigate: any;
   export let getParentProp: Function;
@@ -13,7 +15,7 @@
   let dialog: any;
 
   let navOptions = {
-    verticalNavClass: 'homeNav',
+    verticalNavClass: navClass,
     softkeyLeftListener: function(evt) {
       navInstance.detachListener();
       dialog = new Dialog({
@@ -40,11 +42,14 @@
       });
     },
     softkeyRightListener: function(evt) {
-      console.log('softkeyRightListener', name);
+      console.log('softkeyRightListener', name, this.verticalNavIndex);
     },
     enterListener: function(evt) {
-      console.log('enterListener', name);
-      goto('room');
+      const navClasses = document.getElementsByClassName(navClass);
+      if (navClasses[this.verticalNavIndex] != null) {
+        navClasses[this.verticalNavIndex].click();
+      }
+      //console.log('enterListener', name);
     },
     backspaceListener: function(evt) {
       console.log('backspaceListener', name);
@@ -52,6 +57,10 @@
   };
 
   let navInstance = createKaiNavigator(navOptions);
+
+  function onClickHandler(value) {
+    goto(value);
+  }
 
   onMount(() => {
     console.log('onMount', name);
@@ -68,19 +77,20 @@
 
 </script>
 
-<main id="debug" data-pad-top="28" data-pad-bottom="30">
-  <ListView className="homeNav" title="Title Text" subtitle="Subtitle text is here"/>
-  <ListView className="homeNav" title="Title Text No Subtitle 1"/>
-  <ListView className="homeNav" title="Title Text No Subtitle 2"/>
-  <ListView className="homeNav" title="Title Text No Subtitle 3"/>
-  <ListView className="homeNav" title="Title Text No Subtitle 4"/>
-  <ListView className="homeNav" title="Title Text No Subtitle 5"/>
-  <ListView className="homeNav" title="Title Text No Subtitle 6"/>
-  <ListView className="homeNav" title="Title Text No Subtitle 7"/>
+<main id="home-screen" data-pad-top="28" data-pad-bottom="30">
+  <ListView className="{navClass}" title="Title Text" subtitle="Goto Room" onClick={() => onClickHandler('room')}/>
+  <ListView className="{navClass}" title="Title Text No Subtitle 1"/>
+  <ListView className="{navClass}" title="Title Text No Subtitle 2"/>
+  <ListView className="{navClass}" title="Title Text No Subtitle 3"/>
+  <ListView className="{navClass}" title="Title Text No Subtitle 4"/>
+  <ListView className="{navClass}" title="Title Text No Subtitle 5"/>
+  <ListView className="{navClass}" title="Title Text No Subtitle 6"/>
+  <ListView className="{navClass}" title="Title Text No Subtitle 7"/>
 </main>
 
 <style>
-  main {
+  #home-screen {
     overflow: hidden;
+    width: 100%;
   }
 </style>

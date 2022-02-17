@@ -67,15 +67,15 @@
   let navInstance = createKaiNavigator(navOptions);
 
   onMount(() => {
-    console.log('onMount', title);
+    console.log('onMount', title, softKeyCenterText);
     navInstance.attachListener();
     softwareKey = new SoftwareKey({
       target: document.body,
       props: {
         isInvert: true,
-        left: softKeyLeftText,
-        center: softKeyCenterText,
-        right: softKeyRightText
+        leftText: softKeyLeftText,
+        centerText: softKeyCenterText,
+        rightText: softKeyRightText
       }
     });
   })

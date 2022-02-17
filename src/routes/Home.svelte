@@ -1,8 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog } from '../components';
-  import ListView from '../components/ListView.svelte';
+  import { Dialog, ListView, Separator } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -79,11 +78,14 @@
 
 <main id="home-screen" data-pad-top="28" data-pad-bottom="30">
   <ListView className="{navClass}" title="Title Text" subtitle="Goto Room" onClick={() => onClickHandler('room')}/>
+  <Separator title="Separator 1" />
   <ListView className="{navClass}" title="Title Text No Subtitle 1"/>
   <ListView className="{navClass}" title="Title Text No Subtitle 2"/>
+  <Separator title="Separator 2" />
   <ListView className="{navClass}" title="Title Text No Subtitle 3"/>
   <ListView className="{navClass}" title="Title Text No Subtitle 4"/>
   <ListView className="{navClass}" title="Title Text No Subtitle 5"/>
+  <Separator title="Separator 3" />
   <ListView className="{navClass}" title="Title Text No Subtitle 6"/>
   <ListView className="{navClass}" title="Title Text No Subtitle 7"/>
 </main>

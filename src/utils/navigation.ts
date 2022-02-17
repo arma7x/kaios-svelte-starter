@@ -48,7 +48,7 @@ class KaiNavigator {
   arrowDownListener: Function = (evt) => {
     if (this.verticalNavClass) {
       evt.preventDefault();
-      this.navigateListNav(-1);
+      this.navigateListNav(1);
     }
   };
   arrowLeftListener: Function = (evt) => {

@@ -1,4 +1,5 @@
 
+
 # kaios-svelte-starter
 
 A simple starter template for building a KaiOS app using Svelte and TypeScript.
@@ -15,19 +16,19 @@ A simple starter template for building a KaiOS app using Svelte and TypeScript.
 4. Or, `npm run dev` then visit `localhost:port/index.html`
 
 ### TODO
-. ~~Dialog~~
-. ~~ListView~~
-. ~~Separator~~
-. Option Menu(WIP)
-. Radio
-. Single Selector(Radio)
-. Checkbox
-. Multi Selector(Checkbox)
-. Date Selector
-. Time Selector
-. Loading Progress
-. Button
-. InputText
-. TextArea
-. Range Slider
-. Toaster
+1.  ~~Dialog~~
+2. ~~ListView~~
+3. ~~Separator~~
+4. Option Menu(WIP)
+5. Radio
+6. Single Selector(Radio)
+7. Checkbox
+8. Multi Selector(Checkbox)
+9. Date Selector
+10. Time Selector
+11. Loading Progress
+12. Button
+13. InputText
+14. TextArea
+15. Range Slider
+16. Toaster

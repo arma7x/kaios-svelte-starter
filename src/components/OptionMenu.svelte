@@ -85,7 +85,7 @@
     <div class="kai-option-menu-header">{title}</div>
     <div class="kai-option-menu-body" data-pad-top="66" data-pad-bottom="30">
       {#each options as option}
-      <ListView className="{navClass}" title="{option.title}" subtitle="{option.subtitle}" />
+      <ListView className="{navClass}" title="{option.title}" subtitle="{option.subtitle}"><span></span></ListView>
       {/each}
     </div>
   </div>

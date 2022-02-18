@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import SoftwareKey from './SoftwareKey.svelte';
   import { createKaiNavigator } from '../utils/navigation';
+  import SoftwareKey from './SoftwareKey.svelte';
 
   export let title: string = 'Dialog';
   export let body: string = '';
@@ -12,6 +12,8 @@
   export let onBackspace: Function = () => {};
   export let onSoftkeyLeft: Function = () => {};
   export let onSoftkeyRight: Function = () => {};
+  export let onOpened: Function = () => {};
+  export let onClosed: Function = () => {};
 
   let softwareKey: SoftwareKey;
 
@@ -78,12 +80,14 @@
         rightText: softKeyRightText
       }
     });
+    onOpened();
   })
 
   onDestroy(() => {
     console.log('onDestroy', title);
     navInstance.detachListener();
     softwareKey.$destroy();
+    onClosed();
   })
 
 </script>

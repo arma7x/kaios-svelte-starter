@@ -3,13 +3,14 @@
   import { createKaiNavigator } from '../utils/navigation';
   import SoftwareKey from './SoftwareKey.svelte';
   import ListView from './ListView.svelte';
-  import Radio from './Radio.svelte';
+  import Checkbox from './Checkbox.svelte';
 
   export let title: string = 'Single Selector';
   export let focusIndex: number = 0;
-  export let options: { title: string, subtitle: string, selected: boolean }[];
+  export let options: { title: string, subtitle: string, checked: boolean }[];
   export let softKeyLeftText: string = '';
-  export let softKeyCenterText: string = 'SELECT';
+  export let softKeyCenterTextSelect: string = '';
+  export let softKeyCenterTextDeselect: string = '';
   export let softKeyRightText: string = '';
   export let onBackspace: Function = () => {};
   export let onSoftkeyLeft: Function = () => {};
@@ -39,8 +40,6 @@
     },
     enterListener: function(evt) {
       console.log('enterListener', title);
-      if (options[this.verticalNavIndex].selected)
-        return;
       const navClasses = document.getElementsByClassName(navClass);
       if (navClasses[this.verticalNavIndex] != null) {
         const children = navClasses[this.verticalNavIndex].children
@@ -55,17 +54,32 @@
         return;
       console.log('backspaceListener', title);
       onBackspace(evt, {options});
+    },
+    arrowUpListener: function(evt) {
+      evt.preventDefault();
+      this.navigateListNav(-1);
+      renderCenterKey(this.verticalNavIndex);
+    },
+    arrowDownListener: function(evt) {
+      evt.preventDefault();
+      this.navigateListNav(1);
+      renderCenterKey(this.verticalNavIndex);
     }
   };
 
   let navInstance = createKaiNavigator(navOptions);
 
-  function onRadioChange(scope) {
-    options[scope.key].selected = scope.selected;
-    options.forEach((o, i) => {
-      if (i != scope.key)
-        o.selected = false;
-    });
+  function onCheckboxChange(scope) {
+    options[scope.key].checked = scope.checked;
+    renderCenterKey(scope.key);
+  }
+
+  function renderCenterKey(index) {
+    if (options[index].checked) {
+      softwareKey.setCenterText('DESELECT');
+    } else {
+      softwareKey.setCenterText('SELECT');
+    }
   }
 
   onMount(() => {
@@ -76,10 +90,11 @@
       props: {
         isInvert: false,
         leftText: softKeyLeftText,
-        centerText: softKeyCenterText,
+        centerText: '',
         rightText: softKeyRightText
       }
     });
+    renderCenterKey(focusIndex);
     onOpened();
   })
 
@@ -100,7 +115,7 @@
     <div class="kai-option-menu-body" data-pad-top="66" data-pad-bottom="30">
       {#each options as option, i}
       <ListView className="{navClass}" title="{option.title}" subtitle="{option.subtitle}">
-        <Radio key={i} selected="{option.selected}" onChange={onRadioChange} />
+        <Checkbox key={i} checked="{option.checked}" onChange={onCheckboxChange} />
       </ListView>
       {/each}
     </div>

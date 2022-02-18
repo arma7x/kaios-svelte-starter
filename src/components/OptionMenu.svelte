@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
+  import { createKaiNavigator } from '../utils/navigation';
   import SoftwareKey from './SoftwareKey.svelte';
   import ListView from './ListView.svelte';
-  import { createKaiNavigator } from '../utils/navigation';
 
   const navClass: string = 'optionMenuNav';
 
@@ -16,6 +16,8 @@
   export let onBackspace: Function = () => {};
   export let onSoftkeyLeft: Function = () => {};
   export let onSoftkeyRight: Function = () => {};
+  export let onOpened: Function = () => {};
+  export let onClosed: Function = () => {};
 
   let softwareKey: SoftwareKey;
 
@@ -63,12 +65,15 @@
         rightText: softKeyRightText
       }
     });
+    onOpened();
   })
 
   onDestroy(() => {
+    const idx = navInstance.verticalNavIndex;
     console.log('onDestroy', title);
     navInstance.detachListener();
     softwareKey.$destroy();
+    onClosed({index: idx, selected: options[idx]});
   })
 
 </script>

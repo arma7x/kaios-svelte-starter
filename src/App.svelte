@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Router, Route, Link } from "svelte-navigator";
-  import { AppBar, SoftwareKey } from "./components";
-  import { Home, Room } from "./routes";
+  import { Router, Route, Link } from 'svelte-navigator';
+  import { AppBar, SoftwareKey } from './components';
+  import { Home, Room } from './routes';
   import { onMount, onDestroy } from 'svelte';
 
   export let appBar;

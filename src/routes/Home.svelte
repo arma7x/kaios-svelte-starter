@@ -68,7 +68,14 @@
       target: document.body,
       props: {
         title: 'Option Menu',
-        cursor: 0,
+        focusIndex: 2,
+        options: [
+          { title: 'Option Menu 0', subtitle: 'Option menu 0 subtitle' },
+          { title: 'Option Menu 1', subtitle: 'Option menu 1 subtitle' },
+          { title: 'Option Menu 2', subtitle: 'Option menu 2 subtitle' },
+          { title: 'Option Menu 3', subtitle: 'Option menu 3 subtitle' },
+          { title: 'Option Menu 4', subtitle: 'Option menu 4 subtitle' },
+        ],
         softKeyCenterText: 'select',
         onEnter: (evt, scope) => {
           console.log('onEnter', scope);
@@ -107,7 +114,7 @@
   <ListView className="{navClass}" title="Room" subtitle="Goto room screen" onClick={() => onClickHandler('room')}/>
   <Separator title="Separator 1" />
   <ListView className="{navClass}" title="Qq Yy Pp Gg Jj Test Overflow Test Overflow Test Overflow"/>
-  <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu" onClick={openOptionMenu}/>
+  <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu & focus on index 2" onClick={openOptionMenu}/>
   <Separator title="Separator 2" />
   <ListView className="{navClass}" title="Title Text No Subtitle 3"/>
   <ListView className="{navClass}" title="Title Text No Subtitle 4"/>

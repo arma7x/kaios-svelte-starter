@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, ListView, Separator, Radio, Checkbox } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, ListView, Separator, Radio, Checkbox } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -13,6 +13,7 @@
   let name: string = 'Home';
   let dialog: any;
   let optionMenu: any;
+  let singleSelector: any;
 
   let navOptions = {
     verticalNavClass: navClass,
@@ -84,10 +85,45 @@
           optionMenu = null;
         },
         onBackspace: (evt, scope) => {
-          console.log('onEnter', scope);
+          console.log('onBackspace', scope);
           evt.preventDefault();
           evt.stopPropagation();
           optionMenu.$destroy();
+          navInstance.attachListener();
+          optionMenu = null;
+        }
+      }
+    });
+  }
+
+  function openSingleSelector() {
+    navInstance.detachListener();
+    singleSelector = new SingleSelector({
+      target: document.body,
+      props: {
+        title: 'Single Selector',
+        focusIndex: 2,
+        options: [
+          { title: 'Single Selector 0', subtitle: 'Single selector 0 subtitle', selected: true },
+          { title: 'Single Selector 1', subtitle: 'Single selector 1 subtitle', selected: false },
+          { title: 'Single Selector 2', subtitle: 'Single selector 2 subtitle', selected: false },
+          { title: 'Single Selector 3', subtitle: 'Single selector 3 subtitle', selected: false },
+          { title: 'Single Selector 4', subtitle: 'Single selector 4 subtitle', selected: false },
+        ],
+        softKeyRightText: 'Done',
+        onSoftkeyRight: (evt, scope) => {
+          console.log('onSoftkeyRight', scope);
+          evt.preventDefault();
+          evt.stopPropagation();
+          singleSelector.$destroy();
+          navInstance.attachListener();
+          optionMenu = null;
+        },
+        onBackspace: (evt, scope) => {
+          console.log('onBackspace', scope);
+          evt.preventDefault();
+          evt.stopPropagation();
+          singleSelector.$destroy();
           navInstance.attachListener();
           optionMenu = null;
         }
@@ -115,10 +151,8 @@
   <Separator title="Separator 1" />
   <ListView className="{navClass}" title="Qq Yy Pp Gg Jj Test Overflow Test Overflow Test Overflow"/>
   <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu & focus on index 2" onClick={openOptionMenu}/>
-  <Radio key="key" selected="{false}" />
-  <Checkbox key="key" checked="{false}" />
   <Separator title="Separator 2" />
-  <ListView className="{navClass}" title="Title Text No Subtitle 3"/>
+  <ListView className="{navClass}" title="Single Selector" subtitle="Click to open single selector & focus on index 2" onClick={openSingleSelector}/>
   <ListView className="{navClass}" title="Title Text No Subtitle 4"/>
   <ListView className="{navClass}" title="Title Text No Subtitle 5"/>
   <Separator title="Separator 3" />

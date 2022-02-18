@@ -10,7 +10,7 @@
     <p>{title}</p>
     {#if subtitle}<small>{subtitle}</small>{/if}
   </div>
-  <span class="kai-icon-arrow"></span>
+  <slot><span class="kai-icon-arrow"></span></slot>
 </div>
 
 <style>

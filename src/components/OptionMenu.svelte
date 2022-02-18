@@ -39,13 +39,13 @@
       if (onEnter == null)
         return;
       console.log('enterListener', title);
-      onEnter(evt, {index: this.verticalNavIndex});
+      onEnter(evt, {index: this.verticalNavIndex, selected: options[this.verticalNavIndex]});
     },
     backspaceListener: function(evt) {
       if (onBackspace == null)
         return;
       console.log('backspaceListener', title);
-      onBackspace(evt, {index: this.verticalNavIndex});
+      onBackspace(evt, {index: this.verticalNavIndex, selected: options[this.verticalNavIndex]});
     }
   };
 

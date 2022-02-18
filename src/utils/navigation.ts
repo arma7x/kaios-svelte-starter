@@ -144,7 +144,7 @@ class KaiNavigator {
     }
   }
 
-  attachListener() {
+  attachListener(next:number = 1) {
     document.addEventListener('keydown', this.eventHandler);
     if (!this.init)
       this.init = true;
@@ -152,9 +152,9 @@ class KaiNavigator {
       return;
     setTimeout(() => {
       if (this.verticalNavClass != null)
-        this.navigateListNav(1);
+        this.navigateListNav(next);
       else if (this.horizontalNavClass != null)
-        this.navigateTabNav(1);
+        this.navigateTabNav(next);
     }, 100);
   }
 

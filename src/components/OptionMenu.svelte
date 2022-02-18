@@ -6,9 +6,9 @@
 
   const navClass: string = 'optionMenuNav';
 
-  export let title: string = 'Dialog';
-  export let cursor: number = 0; // TODO
-  export let option: { title: string, subtitle: string }[]; // TODO
+  export let title: string = 'Option Menu';
+  export let focusIndex: number = 0;
+  export let options: { title: string, subtitle: string }[];
   export let softKeyLeftText: string = '';
   export let softKeyCenterText: string = 'Close';
   export let softKeyRightText: string = '';
@@ -53,7 +53,7 @@
 
   onMount(() => {
     console.log('onMount', title);
-    navInstance.attachListener();
+    navInstance.attachListener(focusIndex + 1);
     softwareKey = new SoftwareKey({
       target: document.body,
       props: {
@@ -79,11 +79,9 @@
   <div class="kai-option-menu-content">
     <div class="kai-option-menu-header">{title}</div>
     <div class="kai-option-menu-body" data-pad-top="66" data-pad-bottom="30">
-      <ListView className="{navClass}" title="Option Menu 1"  subtitle="Option menu 1 subtitle" />
-      <ListView className="{navClass}" title="Option Menu 2"  subtitle="Option menu 2 subtitle" />
-      <ListView className="{navClass}" title="Option Menu 3"  subtitle="Option menu 3 subtitle" />
-      <ListView className="{navClass}" title="Option Menu 4"  subtitle="Option menu 4 subtitle" />
-      <ListView className="{navClass}" title="Option Menu 5"  subtitle="Option menu 5 subtitle" />
+      {#each options as option}
+      <ListView className="{navClass}" title="{option.title}" subtitle="{option.subtitle}" />
+      {/each}
     </div>
   </div>
 </div>

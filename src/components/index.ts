@@ -4,6 +4,8 @@ import Dialog from "./Dialog.svelte";;
 import OptionMenu from "./OptionMenu.svelte";
 import ListView from "./ListView.svelte";
 import Separator from "./Separator.svelte";
+import Radio from "./Radio.svelte";
+import Checkbox from "./Checkbox.svelte";
 
 export {
   AppBar,
@@ -11,5 +13,7 @@ export {
   Dialog,
   OptionMenu,
   ListView,
-  Separator
+  Separator,
+  Radio,
+  Checkbox
 }

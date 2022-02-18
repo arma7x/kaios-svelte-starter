@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, ListView, Separator } from '../components';
+  import { Dialog, OptionMenu, ListView, Separator, Radio, Checkbox } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -115,6 +115,8 @@
   <Separator title="Separator 1" />
   <ListView className="{navClass}" title="Qq Yy Pp Gg Jj Test Overflow Test Overflow Test Overflow"/>
   <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu & focus on index 2" onClick={openOptionMenu}/>
+  <Radio key="key" selected="{false}" />
+  <Checkbox key="key" checked="{false}" />
   <Separator title="Separator 2" />
   <ListView className="{navClass}" title="Title Text No Subtitle 3"/>
   <ListView className="{navClass}" title="Title Text No Subtitle 4"/>

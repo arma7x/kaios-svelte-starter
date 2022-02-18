@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, ProgressBar } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -15,13 +15,16 @@
   let optionMenu: any;
   let singleSelector: any;
   let multiSelector: any;
+  let progressBar: any;
 
   let navOptions = {
     verticalNavClass: navClass,
     softkeyLeftListener: function(evt) {
-      openDialog()
+      openDialog();
+      console.log('softkeyLeftListener', name, this.verticalNavIndex);
     },
     softkeyRightListener: function(evt) {
+      showProgressBar()
       console.log('softkeyRightListener', name, this.verticalNavIndex);
     },
     enterListener: function(evt) {
@@ -42,6 +45,24 @@
     goto(value);
   }
 
+  function showProgressBar() {
+    progressBar = new ProgressBar({
+      target: document.body,
+      props: {
+        onOpened: () => {
+          navInstance.detachListener();
+          setTimeout(() => {
+            progressBar.$destroy();
+          }, 3000);
+        },
+        onClosed: () => {
+          navInstance.attachListener();
+          progressBar = null;
+        }
+      }
+    });
+  }
+
   function openDialog() {
     dialog = new Dialog({
       target: document.body,
@@ -52,20 +73,19 @@
         onEnter: (evt) => {
           console.log('onEnter');
           dialog.$destroy();
-          dialog = null;
         },
         onBackspace: (evt) => {
           console.log('onBackspace');
           evt.preventDefault();
           evt.stopPropagation();
           dialog.$destroy();
-          dialog = null;
         },
         onOpened: () => {
           navInstance.detachListener();
         },
         onClosed: () => {
           navInstance.attachListener();
+          dialog = null;
         }
       }
     });
@@ -204,7 +224,7 @@
 <main id="home-screen" data-pad-top="28" data-pad-bottom="30">
   <ListView className="{navClass}" title="Room" subtitle="Goto room screen" onClick={() => onClickHandler('room')}/>
   <Separator title="Separator 1" />
-  <ListView className="{navClass}" title="Qq Yy Pp Gg Jj Test Overflow Test Overflow Test Overflow"/>
+  <ListView className="{navClass}" title="Progress Bar" subtitle="Display progress bar & freeze keydown for 3 seconds" onClick={showProgressBar} />
   <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu & focus on index 2" onClick={openOptionMenu}/>
   <Separator title="Separator 2" />
   <ListView className="{navClass}" title="Single Selector" subtitle="Click to open single selector & focus on index 2" onClick={openSingleSelector}/>

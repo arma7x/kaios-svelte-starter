@@ -8,6 +8,7 @@ import ListView from "./ListView.svelte";
 import Separator from "./Separator.svelte";
 import Radio from "./Radio.svelte";
 import Checkbox from "./Checkbox.svelte";
+import ProgressBar from "./ProgressBar.svelte";
 
 export {
   AppBar,
@@ -19,5 +20,6 @@ export {
   ListView,
   Separator,
   Radio,
-  Checkbox
+  Checkbox,
+  ProgressBar
 }

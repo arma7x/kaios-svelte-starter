@@ -54,6 +54,7 @@
     font-size: 13px;
     font-weight: lighter;
     color: #6a6a6a;
+    text-align: start;
   }
 
   .kai-list-view > span {

@@ -15,13 +15,13 @@
   })
 </script>
 
-<div class="kai-progress-bar">
+<div class="kai-loading-bar">
   <div class="bar bar1"></div>
   <div class="bar bar2"></div>
 </div>
 
 <style>
-  .kai-progress-bar {
+  .kai-loading-bar {
     background: #FFCBBA;
     height: 5px;
     top: 0;
@@ -31,11 +31,11 @@
     -webkit-animation: start 0.3s ease-in;
             animation: start 0.3s ease-in;
   }
-  .kai-progress-bar.small {
+  .kai-loading-bar.small {
     width: 15%;
     height: 2px;
   }
-  .kai-progress-bar .bar {
+  .kai-loading-bar .bar {
     position: absolute;
     background: #ffffff;
     transition: transform 0.2s linear;
@@ -45,11 +45,11 @@
     bottom: 0;
     width: 100%;
   }
-  .kai-progress-bar .bar1 {
+  .kai-loading-bar .bar1 {
     -webkit-animation: growBar1 2.5s infinite, moveBar1 2.5s infinite;
             animation: growBar1 2.5s infinite, moveBar1 2.5s infinite;
   }
-  .kai-progress-bar .bar2 {
+  .kai-loading-bar .bar2 {
     -webkit-animation: growBar2 2.5s infinite, moveBar2 2.5s infinite;
             animation: growBar2 2.5s infinite, moveBar2 2.5s infinite;
   }
@@ -253,7 +253,7 @@
       opacity: 1;
     }
   }
-  @-webkit-keyframes progressLinearMovement {
+  @-webkit-keyframes loadingLinearMovement {
     0% {
       left: -100%;
     }
@@ -264,7 +264,7 @@
       left: 100%;
     }
   }
-  @keyframes progressLinearMovement {
+  @keyframes loadingLinearMovement {
     0% {
       left: -100%;
     }

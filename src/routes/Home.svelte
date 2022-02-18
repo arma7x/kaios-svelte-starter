@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, ProgressBar, Toast, Toaster } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, Toast, Toaster } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -15,7 +15,7 @@
   let optionMenu: any;
   let singleSelector: any;
   let multiSelector: any;
-  let progressBar: any;
+  let loadingBar: any;
 
   let navOptions = {
     verticalNavClass: navClass,
@@ -67,19 +67,19 @@
     goto(value);
   }
 
-  function showProgressBar() {
-    progressBar = new ProgressBar({
+  function showLoadingBar() {
+    loadingBar = new LoadingBar({
       target: document.body,
       props: {
         onOpened: () => {
           navInstance.detachListener();
           setTimeout(() => {
-            progressBar.$destroy();
+            loadingBar.$destroy();
           }, 3000);
         },
         onClosed: () => {
           navInstance.attachListener();
-          progressBar = null;
+          loadingBar = null;
         }
       }
     });
@@ -246,7 +246,7 @@
 <main id="home-screen" data-pad-top="28" data-pad-bottom="30">
   <ListView className="{navClass}" title="Room" subtitle="Goto room screen" onClick={() => onClickHandler('room')}/>
   <Separator title="Separator 1" />
-  <ListView className="{navClass}" title="Progress Bar" subtitle="Display progress bar & freeze keydown for 3 seconds" onClick={showProgressBar} />
+  <ListView className="{navClass}" title="Progress Bar" subtitle="Display progress bar & freeze keydown for 3 seconds" onClick={showLoadingBar} />
   <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu & focus on index 2" onClick={openOptionMenu}/>
   <Separator title="Separator 2" />
   <ListView className="{navClass}" title="Single Selector" subtitle="Click to open single selector & focus on index 2" onClick={openSingleSelector}/>

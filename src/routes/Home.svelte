@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, ProgressBar } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, ProgressBar, Toast, Toaster } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -24,7 +24,29 @@
       console.log('softkeyLeftListener', name, this.verticalNavIndex);
     },
     softkeyRightListener: function(evt) {
-      showProgressBar()
+      const t = new Toast({
+        target: document.body,
+        props: {
+          options: {}
+        }
+      })
+      Toaster.push('I\'m out after 5 second' , {
+        dismissable: false,
+        theme: {
+          '--toastMinHeight': '40px',
+          '--toastBackground': '#2f2f2f',
+          '--toastColor': '#ffffff',
+          '--toastWidth': '80vw',
+          '--toastBarBackground': 'var(--themeColor)'
+        },
+        intro: { y: -64 },
+        duration: 5000,
+        onpop: () => {
+          setTimeout(() => {
+            t.$destroy();
+          }, 1000);
+        }
+      })
       console.log('softkeyRightListener', name, this.verticalNavIndex);
     },
     enterListener: function(evt) {
@@ -210,7 +232,7 @@
     console.log('onMount', name);
     const { appBar, softwareKey } = getParentProp();
     appBar.setTitleText(name);
-    softwareKey.setText({ left: `Dialog L`, center: `${name} C`, right: `${name} R` });
+    softwareKey.setText({ left: `Dialog L`, center: `${name} C`, right: `Toast R` });
     navInstance.attachListener();
   });
 

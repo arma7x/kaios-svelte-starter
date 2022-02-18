@@ -31,4 +31,4 @@ A simple starter template for building a KaiOS app using Svelte and TypeScript.
 13. InputText
 14. TextArea
 15. Range Slider
-16. Toaster
+16. ~~Toaster~~

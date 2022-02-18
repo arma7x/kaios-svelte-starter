@@ -9,6 +9,7 @@ import Separator from "./Separator.svelte";
 import Radio from "./Radio.svelte";
 import Checkbox from "./Checkbox.svelte";
 import ProgressBar from "./ProgressBar.svelte";
+import { SvelteToast, toast } from '@zerodevx/svelte-toast'
 
 export {
   AppBar,
@@ -21,5 +22,7 @@ export {
   Separator,
   Radio,
   Checkbox,
-  ProgressBar
+  ProgressBar,
+  SvelteToast as Toast,
+  toast as Toaster
 }

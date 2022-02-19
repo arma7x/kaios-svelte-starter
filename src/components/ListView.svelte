@@ -27,6 +27,7 @@
     padding: 0px 8px;
     height: 60px;
     width: 100%;
+    font-size: 14px;
   }
 
   .kai-list-view > .kai-list-view-content {

@@ -45,7 +45,7 @@ export default {
   plugins: [
     svelte({
       preprocess: sveltePreprocess({
-        sourceMap: !production,
+        sourceMap: false,
         typescript: {
           compilerOptions: {
             target: 'ES2015',
@@ -104,7 +104,7 @@ export default {
     }),
     commonjs(),
     typescript({
-      sourceMap: !production,
+      sourceMap: false,
       inlineSources: !production,
     }),
 

@@ -18,6 +18,7 @@
 </script>
 
 <Router>
+  <div id="kai-status-bar"></div>
   <AppBar bind:this={appBar} />
   <main>
     <Route primary={false} path="index.html" let:location let:navigate>
@@ -31,15 +32,20 @@
 </Router>
 
 <style>
+  #kai-status-bar {
+    height: 26px;
+    width: 100%;
+    background-color: var(--themeColor);
+  }
   main {
     display: flex;
-    top: 28px;
+    top: 54px;
     margin: 0px;
     padding: 0px;
     position: fixed;
     text-align: center;
     width: 100%;
-    height: calc(100% - 58px);
+    height: calc(100% - 84px);
     overflow: scroll;
   }
 </style>

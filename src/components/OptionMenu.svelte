@@ -97,19 +97,19 @@
     height: calc(100% - 30px);
     bottom: 30px;
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
   }
   .kai-option-menu > .kai-option-menu-content {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-height: calc(100% - 68px);
+    max-height: calc(100% - 84px);
     bottom: 30px;
     position: fixed;
     background-color: #ffffff;
   }
   .kai-option-menu > .kai-option-menu-content > .kai-option-menu-header {
-    width: calc(100% - 8px);
+    width: 100%;
     text-align: center;
     vertical-align: middle;
     line-height: 28px;

@@ -10,9 +10,9 @@
 
 <style>
   .kai-app-bar {
-    top: 0px;
+    top: 26px;
     position: fixed;
-    width: calc(100% - 8px);
+    width: 100%;
     text-align: center;
     vertical-align: middle;
     line-height: 28px;

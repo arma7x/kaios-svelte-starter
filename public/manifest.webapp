@@ -6,6 +6,10 @@
   "theme": "#ff3e00",
   "theme_color": "#ff3e00",
   "background_color": "#ff3e00",
+  "fullscreen": "true",
+  "chrome": {
+    "statusbar": "overlap"
+  },
   "orientation": "default",
   "icons": {
     "56": "/icons/icon56x56.png",

@@ -21,7 +21,7 @@
     align-items: center;
     background-color: #ffffff;
     box-sizing: border-box;
-    padding: 4px;
+    padding: 4px 8px 4px 4px;
     height: 60px;
     width: 100%;
   }
@@ -37,28 +37,28 @@
     padding: 0px;
     margin: 0px 4px 0px 0px;
     font-weight: 400;
-    color: #313131;
+    color: #252525;
     font-size: 14px;
     text-align: start;
-    height: 16px;
+    height: 20px;
     width: calc(100% - 4px);
     white-space: pre-wrap!important;
     word-break: break-word!important;
     overflow: hidden;
     text-overflow: ellipsis;
+    vertical-align: middle;
   }
 
   .kai-list-view > .kai-list-view-content > small {
     padding: 0px;
-    margin: 4px 0px 0px 0px;
-    font-size: 13px;
-    font-weight: lighter;
-    color: #6a6a6a;
+    font-size: 12px;
+    color: #6B6B6B;
     text-align: start;
+    vertical-align: middle;
   }
 
   .kai-list-view > span {
-    color: #313131;
+    color: #6B6B6B;
   }
 
   .kai-list-view.focus,

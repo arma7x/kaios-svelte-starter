@@ -7,6 +7,7 @@
   --toastMinHeight: 30px;
   --toastBackground: #2f2f2f;
   --toastColor: #ffffff;
+  --toastBorderRadius: 0;
   --toastBarBackground: var(--themeColor);
 }
 

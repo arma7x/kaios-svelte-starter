@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, Toast, Toaster } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, TextInput, Toast, Toaster, SoftwareKey } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -11,25 +11,32 @@
   export let getParentProp: Function;
 
   let name: string = 'Home';
-  let dialog: any;
-  let optionMenu: any;
-  let singleSelector: any;
-  let multiSelector: any;
-  let loadingBar: any;
+  let dialog: Dialog;
+  let optionMenu: OptionMenu;
+  let singleSelector: SingleSelector;
+  let multiSelector: MultiSelector;
+  let loadingBar: LoadingBar;
+  let inputSoftwareKey: SoftwareKey;
   let progressValue: number = 0;
   let sliderValue: number = 20;
 
   let navOptions = {
     verticalNavClass: navClass,
     softkeyLeftListener: function(evt) {
+      if (inputSoftwareKey)
+        return;
       openDialog();
       console.log('softkeyLeftListener', name, this.verticalNavIndex);
     },
     softkeyRightListener: function(evt) {
+      if (inputSoftwareKey)
+        return;
       toastMessage();
       console.log('softkeyRightListener', name, this.verticalNavIndex);
     },
     enterListener: function(evt) {
+      if (inputSoftwareKey)
+        return;
       const navClasses = document.getElementsByClassName(navClass);
       if (navClasses[this.verticalNavIndex] != null) {
         navClasses[this.verticalNavIndex].click();
@@ -275,6 +282,31 @@
     window.close();
   }
 
+  function onInput(evt) {
+    console.log('onInput');
+  }
+
+  function onFocus(evt) {
+    console.log('onFocus');
+    inputSoftwareKey = new SoftwareKey({
+      target: document.body,
+      props: {
+        isInvert: true,
+        leftText: 'X Dialog',
+        centerText: 'X Enter',
+        rightText: 'X Toast'
+      }
+    });
+  }
+
+  function onBlur(evt) {
+    console.log('onBlur');
+    if (inputSoftwareKey) {
+      inputSoftwareKey.$destroy();
+      inputSoftwareKey = null;
+    }
+  }
+
   onMount(() => {
     console.log('onMount', name);
     const { appBar, softwareKey } = getParentProp();
@@ -312,7 +344,7 @@
   </ListView>
   <ListView className="{navClass}" title="Title Text No Subtitle 5"/>
   <Separator title="Separator 3" />
-  <ListView className="{navClass}" title="Title Text No Subtitle 6"/>
+  <TextInput className="{navClass}" label="Label" placeholder="Placeholder" value="Value" {onInput} {onFocus} {onBlur}/>
   <ListView className="{navClass}" title="Title Text No Subtitle 7"/>
   <Button className="{navClass}" text="Exit" onClick={onButtonClick}>
     <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>

@@ -13,7 +13,7 @@
 <style>
   div.kai-button {
     font-size: 17px;
-    height: 36px;
+    height: 40px;
     border-radius: 2px;
     background: #ccc;
     text-align: center;
@@ -27,7 +27,7 @@
     margin: 10px auto;
     padding: 0 5px;
     width: calc(100% - 20px);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   div.kai-button.focus {

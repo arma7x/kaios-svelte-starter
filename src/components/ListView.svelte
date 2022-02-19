@@ -1,16 +1,19 @@
 <script lang="ts">
+  export let key:any = '';
   export let title: string = '';
   export let subtitle: string = null;
   export let className: string = null;
   export let onClick: Function = (evt) => {}
 </script>
 
-<div class="kai-list-view {className ? className : ''}" on:click={onClick}>
-  <div class="kai-list-view-content">
-    <p>{title}</p>
-    {#if subtitle}<small>{subtitle}</small>{/if}
-  </div>
-  <slot><span class="kai-icon-arrow"></span></slot>
+<div data-key="{key}" class="kai-list-view {className ? className : ''}" on:click={onClick}>
+  <slot name="contentWidget">
+    <div class="kai-list-view-content">
+      <p>{title}</p>
+      {#if subtitle}<small>{subtitle}</small>{/if}
+    </div>
+  </slot>
+  <slot name="rightIconWidget"><span class="kai-icon-arrow"></span></slot>
 </div>
 
 <style>
@@ -21,7 +24,7 @@
     align-items: center;
     background-color: #ffffff;
     box-sizing: border-box;
-    padding: 4px 8px 4px 4px;
+    padding: 0px 8px;
     height: 60px;
     width: 100%;
   }
@@ -31,17 +34,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
+    padding: 0px 4px 0px 0px;
+    width: 100%;
   }
 
   .kai-list-view > .kai-list-view-content > p {
     padding: 0px;
-    margin: 0px 4px 0px 0px;
+    margin: 0px;
     font-weight: 400;
     color: #252525;
     font-size: 14px;
     text-align: start;
     height: 20px;
-    width: calc(100% - 4px);
+    width: 100%;
     white-space: pre-wrap!important;
     word-break: break-word!important;
     overflow: hidden;

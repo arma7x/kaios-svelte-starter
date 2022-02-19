@@ -186,3 +186,38 @@ button:not(:disabled):active {
 button:focus {
   border-color: #666;
 }
+
+.kai-list-view > .kai-list-view-content > .kai-progress-body {
+  width: 100%; 
+}
+
+.kai-list-view > .kai-list-view-content > .kai-progress-body > .kai-progress-track {
+  width: 100%;
+  background-color: #CCCCCC;
+  height: 5px;
+  border-radius: 4px;
+}
+
+.kai-list-view > .kai-list-view-content > .kai-progress-body > .kai-progress-loaded {
+  background-color: var(--themeColor);
+  height: 5px;
+}
+
+.kai-list-view > .kai-list-view-content > .kai-progress-body > .kai-progress-thumb {
+  background-color: #ffffff;
+  height: 5px;
+  width: 3px;
+  border-radius: 0px;
+}
+
+.kai-list-view.focus > .kai-list-view-content > .kai-progress-body > .kai-progress-track {
+  background-color: #8C8C8C;
+}
+
+.kai-list-view.focus > .kai-list-view-content > .kai-progress-body > .kai-progress-loaded {
+  background-color: #ffffff;
+}
+
+.kai-list-view.focus > .kai-list-view-content > .kai-progress-body > .kai-progress-thumb {
+  background-color: var(--themeColor);
+}

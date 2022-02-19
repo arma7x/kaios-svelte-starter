@@ -100,7 +100,7 @@
     <div class="kai-option-menu-body" data-pad-top="66" data-pad-bottom="30">
       {#each options as option, i}
       <ListView className="{navClass}" title="{option.title}" subtitle="{option.subtitle}">
-        <Radio key={i} selected="{option.selected}" onChange={onRadioChange} />
+        <Radio slot="rightIconWidget" key={i} selected="{option.selected}" onChange={onRadioChange} />
       </ListView>
       {/each}
     </div>

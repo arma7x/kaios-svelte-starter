@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, Toast, Toaster } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, ProgressBar, Toast, Toaster } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -16,6 +16,7 @@
   let singleSelector: any;
   let multiSelector: any;
   let loadingBar: any;
+  let progressValue: number = 0;
 
   let navOptions = {
     verticalNavClass: navClass,
@@ -51,7 +52,29 @@
     },
     backspaceListener: function(evt) {
       console.log('backspaceListener', name);
-    }
+    },
+    arrowLeftListener: function(evt) {
+      console.log('arrowLeftListener', name);
+      const navClasses = document.getElementsByClassName(navClass);
+      if (navClasses[this.verticalNavIndex] != null) {
+        if (navClasses[this.verticalNavIndex].getAttribute('data-key') === 'progress-bar') {
+          if (progressValue === 0)
+            return;
+          progressValue -= 10;
+        } 
+      }
+    },
+    arrowRightListener: function(evt) {
+      console.log('arrowRightListener', name);
+      const navClasses = document.getElementsByClassName(navClass);
+      if (navClasses[this.verticalNavIndex] != null) {
+        if (navClasses[this.verticalNavIndex].getAttribute('data-key') === 'progress-bar') {
+          if (progressValue === 100)
+            return;
+          progressValue += 10;
+        } 
+      }
+    },
   };
 
   let navInstance = createKaiNavigator(navOptions);
@@ -239,12 +262,12 @@
 <main id="home-screen" data-pad-top="28" data-pad-bottom="30">
   <ListView className="{navClass}" title="Room" subtitle="Goto room screen" onClick={() => onClickHandler('room')}/>
   <Separator title="Separator 1" />
-  <ListView className="{navClass}" title="Progress Bar" subtitle="Display progress bar & freeze keydown for 3 seconds" onClick={showLoadingBar} />
+  <ListView className="{navClass}" title="Loading Bar" subtitle="Display loading bar & freeze keydown for 3 seconds" onClick={showLoadingBar} />
   <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu & focus on index 2" onClick={openOptionMenu}/>
   <Separator title="Separator 2" />
   <ListView className="{navClass}" title="Single Selector" subtitle="Click to open single selector & focus on index 2" onClick={openSingleSelector}/>
   <ListView className="{navClass}" title="Multi Selector" subtitle="Click to open multi selector & focus on index 2" onClick={openMultiSelector}/>
-  <ListView className="{navClass}" title="Title Text No Subtitle 4"/>
+  <ProgressBar key="progress-bar" className="{navClass}" title="Progress" value={progressValue} min={0} max={100}/>
   <ListView className="{navClass}" title="Title Text No Subtitle 5"/>
   <Separator title="Separator 3" />
   <ListView className="{navClass}" title="Title Text No Subtitle 6"/>

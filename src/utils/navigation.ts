@@ -142,6 +142,17 @@ class KaiNavigator {
         marginBottom = parseFloat(cursor.parentElement.getAttribute("data-pad-bottom"));
       dispatchScroll(cursor.parentElement, cursor.offsetTop - ((cursor.parentElement.clientHeight - marginTop - marginBottom) / 2));
     }
+    if (['INPUT', 'TEXTAREA'].indexOf(document.activeElement.tagName) > -1) {
+      document.activeElement.blur();
+    }
+    const keys = Object.keys(cursor.children);
+    for (var k in keys) {
+      if (['INPUT', 'TEXTAREA'].indexOf(cursor.children[k].tagName) > -1) {
+        cursor.children[k].focus();
+        cursor.children[k].selectionStart = cursor.children[k].selectionEnd = (cursor.children[k].value.length || cursor.children[k].value.length);
+        break;
+      }
+    }
   }
 
   attachListener(next:number = 1) {

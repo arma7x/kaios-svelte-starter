@@ -31,11 +31,13 @@
       if (onSoftkeyLeft == null)
         return;
       console.log('softkeyLeftListener', title);
+      onSoftkeyLeft(evt);
     },
     softkeyRightListener: function(evt) {
       if (onSoftkeyRight == null)
         return;
       console.log('softkeyRightListener', title);
+      onSoftkeyRight(evt);
     },
     enterListener: function(evt) {
       if (onEnter == null)

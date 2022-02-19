@@ -31,6 +31,7 @@
       if (onSoftkeyLeft == null)
         return;
       console.log('softkeyLeftListener', title);
+      onSoftkeyLeft(evt, {options});
     },
     softkeyRightListener: function(evt) {
       if (onSoftkeyRight == null)

@@ -143,6 +143,12 @@
           { title: 'Option Menu 4', subtitle: 'Option menu 4 subtitle' },
         ],
         softKeyCenterText: 'select',
+        onSoftkeyRight: (evt) => {
+          console.log('onSoftkeyRight', evt);
+        },
+        onSoftkeyRight: (evt) => {
+          console.log('onSoftkeyRight', evt);
+        },
         onEnter: (evt, scope) => {
           console.log('onEnter', scope);
           optionMenu.$destroy();

@@ -188,6 +188,10 @@ button:focus {
   border-color: #666;
 }
 
+._toastItem {
+  text-align: center!important;
+}
+
 .kai-list-view.focus > .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-track {
   background-color: #8C8C8C!important;
 }

@@ -32,6 +32,7 @@
 <style>
 
   .kai-linear-progress-content {
+    margin-top: -10px;
     width: 100%;
   }
 

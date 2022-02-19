@@ -33,7 +33,8 @@
 <style>
 
   .kai-range-slider-content {
-    width: calc(100% - 20px);
+    margin-top: -10px;
+    width: calc(100% - 22px);
   }
 
   .kai-range-slider-content > .kai-range-slider-header {
@@ -45,7 +46,7 @@
   }
 
   .kai-range-slider-content > .kai-range-slider-header  > .indicator {
-    margin-right: -20px;
+    margin-right: -22px;
   }
 
   .kai-range-slider-content > .kai-range-slider-body {
@@ -63,7 +64,7 @@
   }
 
   .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-track-shadow {
-    width: calc(100% + 20px);
+    width: calc(100% + 22px);
     background-color: #CCCCCC;
     height: 8px;
     border-radius: 4px;
@@ -81,10 +82,10 @@
   .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-thumb {
     background-color: var(--themeColor);
     border: 3px solid #ffffff;
-    height: 20px;
-    width: 20px;
+    height: 22px;
+    width: 22px;
     border-radius: 50%;
-    top: -6.5px;
+    top: -7px;
     position: absolute;
   }
 </style>

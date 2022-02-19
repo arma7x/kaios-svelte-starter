@@ -31,6 +31,7 @@
       if (onSoftkeyLeft == null)
         return;
       console.log('softkeyLeftListener', title);
+      onSoftkeyLeft(evt, {options});
     },
     softkeyRightListener: function(evt) {
       if (onSoftkeyRight == null)
@@ -88,7 +89,7 @@
     softwareKey = new SoftwareKey({
       target: document.body,
       props: {
-        isInvert: false,
+        isInvert: true,
         leftText: softKeyLeftText,
         centerText: '',
         rightText: softKeyRightText
@@ -115,7 +116,7 @@
     <div class="kai-option-menu-body" data-pad-top="66" data-pad-bottom="30">
       {#each options as option, i}
       <ListView className="{navClass}" title="{option.title}" subtitle="{option.subtitle}">
-        <Checkbox slot="rightIconWidget" key={i} checked="{option.checked}" onChange={onCheckboxChange} />
+        <Checkbox slot="rightWidget" key={i} checked="{option.checked}" onChange={onCheckboxChange} />
       </ListView>
       {/each}
     </div>

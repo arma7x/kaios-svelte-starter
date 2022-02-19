@@ -59,7 +59,7 @@
     softwareKey = new SoftwareKey({
       target: document.body,
       props: {
-        isInvert: false,
+        isInvert: true,
         leftText: softKeyLeftText,
         centerText: softKeyCenterText,
         rightText: softKeyRightText
@@ -85,7 +85,7 @@
     <div class="kai-option-menu-header">{title}</div>
     <div class="kai-option-menu-body" data-pad-top="66" data-pad-bottom="30">
       {#each options as option}
-      <ListView className="{navClass}" title="{option.title}" subtitle="{option.subtitle}"><span slot="rightIconWidget"></span></ListView>
+      <ListView className="{navClass}" title="{option.title}" subtitle="{option.subtitle}"><span slot="rightWidget"></span></ListView>
       {/each}
     </div>
   </div>

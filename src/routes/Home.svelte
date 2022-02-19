@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, Toast, Toaster } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Toast, Toaster } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -178,10 +178,9 @@
           { title: 'Single Selector 3', subtitle: 'Single selector 3 subtitle', selected: false },
           { title: 'Single Selector 4', subtitle: 'Single selector 4 subtitle', selected: false },
         ],
-        softKeyRightText: 'Done',
         softKeyCenterText: 'select',
-        onSoftkeyRight: (evt, scope) => {
-          console.log('onSoftkeyRight', scope);
+        onEnter: (evt, scope) => {
+          console.log('onEnter', scope);
           evt.preventDefault();
           evt.stopPropagation();
           singleSelector.$destroy();
@@ -217,9 +216,16 @@
           { title: 'Multi Selector 3', subtitle: 'Multi selector 3 subtitle', checked: false },
           { title: 'Multi Selector 4', subtitle: 'Multi selector 4 subtitle', checked: false },
         ],
+        softKeyLeftText: 'Cancel',
         softKeyRightText: 'Done',
         softKeyCenterTextSelect: 'select',
         softKeyCenterTextDeselect: 'deselect',
+        onSoftkeyLeft: (evt, scope) => {
+          console.log('onSoftkeyLeft', scope);
+          evt.preventDefault();
+          evt.stopPropagation();
+          multiSelector.$destroy();
+        },
         onSoftkeyRight: (evt, scope) => {
           console.log('onSoftkeyRight', scope);
           evt.preventDefault();
@@ -269,9 +275,9 @@
   <ListView className="{navClass}" title="Multi Selector" subtitle="Click to open multi selector & focus on index 2" onClick={openMultiSelector}/>
   <ListView key="progress-bar" className="{navClass}">
     <slot>
-      <LinearProgress title="Progress" value={progressValue} min={0} max={100}/>
+      <LinearProgress title="Linear Progress" value={progressValue} min={0} max={100}/>
     </slot>
-    <span slot="rightIconWidget"></span>
+    <span slot="rightWidget"></span>
   </ListView>
   <ListView className="{navClass}" title="Title Text No Subtitle 5"/>
   <Separator title="Separator 3" />

@@ -13,7 +13,7 @@
       {#if subtitle}<small>{subtitle}</small>{/if}
     </div>
   </slot>
-  <slot name="rightIconWidget"><span class="kai-icon-arrow"></span></slot>
+  <slot name="rightWidget"><span class="kai-icon-arrow"></span></slot>
 </div>
 
 <style>

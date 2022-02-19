@@ -66,7 +66,7 @@
   .kai-software-key > .center {
     text-align: center;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
     width: 34%;
   }
   .kai-software-key > .right {

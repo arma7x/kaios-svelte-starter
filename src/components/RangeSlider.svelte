@@ -1,5 +1,4 @@
 <script lang="ts">
-  import ListView from './ListView.svelte';
 
   export let key:any = '';
   export let title: string = '';
@@ -18,38 +17,58 @@
 
 </script>
 
-<ListView key={key} className={className}>
-  <div class="kai-list-view-content" slot="contentWidget">
-    <div class="kai-progress-header">
-      <span>{title}</span>
-      <span>{progress}/{max}</span>
-    </div>
-    <div class="kai-progress-body">
-      <div class="kai-progress-track"></div>
-      <div class="kai-progress-loaded" style="width:{progress}%;border-radius:{progress === 100 ? '4px' : '4px 0px 0px 4px'};"></div>
-      <div class="kai-progress-thumb" style="left:calc({progress}% - 3px);visibility:{progress === 100 ? 'hidden' : 'visible'};"></div>
-    </div>
+<div class="kai-linear-progress-content">
+  <div class="kai-linear-progress-header">
+    <span>{title}</span>
+    <span>{progress}/{max}</span>
   </div>
-  <span slot="rightIconWidget"></span>
-</ListView>
+  <div class="kai-linear-progress-body">
+    <div class="kai-linear-progress-track"></div>
+    <div class="kai-linear-progress-loaded" style="width:{progress}%;border-radius:{progress === 100 ? '4px' : '4px 0px 0px 4px'};"></div>
+    <div class="kai-linear-progress-thumb" style="left:calc({progress}% - 2px);visibility:{progress == 100 || progress == 0 ? 'hidden' : 'visible'};"></div>
+  </div>
+</div>
 
 <style>
-  .kai-list-view-content {
+
+  .kai-linear-progress-content {
     width: 100%;
   }
-  .kai-list-view-content > .kai-progress-header {
+
+  .kai-linear-progress-content > .kai-linear-progress-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
   }
-  .kai-list-view-content > .kai-progress-body {
+
+  .kai-linear-progress-content > .kai-linear-progress-body {
     position: relative;
+    width: 100%; 
   }
-  .kai-list-view-content > .kai-progress-body > .kai-progress-track,
-  .kai-list-view-content > .kai-progress-body > .kai-progress-loaded,
-  .kai-list-view-content > .kai-progress-body > .kai-progress-thumb {
+
+  .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-track {
+    width: 100%;
+    background-color: #CCCCCC;
+    height: 5px;
+    border-radius: 4px;
+    top: 0px;
+    position: absolute;
+  }
+
+  .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-loaded {
+    background-color: var(--themeColor);
+    height: 5px;
+    top: 0px;
+    position: absolute;
+  }
+
+  .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-thumb {
+    background-color: #ffffff;
+    height: 5px;
+    width: 2px;
+    border-radius: 0px;
     top: 0px;
     position: absolute;
   }

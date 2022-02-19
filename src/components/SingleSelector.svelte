@@ -11,6 +11,7 @@
   export let softKeyLeftText: string = '';
   export let softKeyCenterText: string = 'SELECT';
   export let softKeyRightText: string = '';
+  export let onEnter: Function = () => {};
   export let onBackspace: Function = () => {};
   export let onSoftkeyLeft: Function = () => {};
   export let onSoftkeyRight: Function = () => {};
@@ -39,8 +40,10 @@
     },
     enterListener: function(evt) {
       console.log('enterListener', title);
-      if (options[this.verticalNavIndex].selected)
+      if (options[this.verticalNavIndex].selected) {
+        onEnter();
         return;
+      }
       const navClasses = document.getElementsByClassName(navClass);
       if (navClasses[this.verticalNavIndex] != null) {
         const children = navClasses[this.verticalNavIndex].children
@@ -49,6 +52,7 @@
           children[c].click();
         }
       }
+      onEnter(evt, {options});
     },
     backspaceListener: function(evt) {
       if (onBackspace == null)
@@ -74,7 +78,7 @@
     softwareKey = new SoftwareKey({
       target: document.body,
       props: {
-        isInvert: false,
+        isInvert: true,
         leftText: softKeyLeftText,
         centerText: softKeyCenterText,
         rightText: softKeyRightText
@@ -100,7 +104,7 @@
     <div class="kai-option-menu-body" data-pad-top="66" data-pad-bottom="30">
       {#each options as option, i}
       <ListView className="{navClass}" title="{option.title}" subtitle="{option.subtitle}">
-        <Radio slot="rightIconWidget" key={i} selected="{option.selected}" onChange={onRadioChange} />
+        <Radio slot="rightWidget" key={i} selected="{option.selected}" onChange={onRadioChange} />
       </ListView>
       {/each}
     </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, ProgressBar, Toast, Toaster } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, Toast, Toaster } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -267,7 +267,12 @@
   <Separator title="Separator 2" />
   <ListView className="{navClass}" title="Single Selector" subtitle="Click to open single selector & focus on index 2" onClick={openSingleSelector}/>
   <ListView className="{navClass}" title="Multi Selector" subtitle="Click to open multi selector & focus on index 2" onClick={openMultiSelector}/>
-  <ProgressBar key="progress-bar" className="{navClass}" title="Progress" value={progressValue} min={0} max={100}/>
+  <ListView key="progress-bar" className="{navClass}">
+    <slot>
+      <LinearProgress title="Progress" value={progressValue} min={0} max={100}/>
+    </slot>
+    <span slot="rightIconWidget"></span>
+  </ListView>
   <ListView className="{navClass}" title="Title Text No Subtitle 5"/>
   <Separator title="Separator 3" />
   <ListView className="{navClass}" title="Title Text No Subtitle 6"/>

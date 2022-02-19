@@ -7,7 +7,7 @@
 </script>
 
 <div data-key="{key}" class="kai-list-view {className ? className : ''}" on:click={onClick}>
-  <slot name="contentWidget">
+  <slot>
     <div class="kai-list-view-content">
       <p>{title}</p>
       {#if subtitle}<small>{subtitle}</small>{/if}

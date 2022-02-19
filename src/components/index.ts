@@ -9,7 +9,7 @@ import Separator from "./Separator.svelte";
 import Radio from "./Radio.svelte";
 import Checkbox from "./Checkbox.svelte";
 import LoadingBar from "./LoadingBar.svelte";
-import ProgressBar from "./ProgressBar.svelte";
+import LinearProgress from "./LinearProgress.svelte";
 import { SvelteToast, toast } from '@zerodevx/svelte-toast'
 
 export {
@@ -24,7 +24,7 @@ export {
   Radio,
   Checkbox,
   LoadingBar,
-  ProgressBar,
+  LinearProgress,
   SvelteToast as Toast,
   toast as Toaster
 }

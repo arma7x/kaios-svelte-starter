@@ -1,7 +1,7 @@
 <script lang="ts">
 
   export let key:any = '';
-  export let title: string = '';
+  export let label: string = '';
   export let className:string = '';
   export let value: number = 0;
   export let min: number = 0;
@@ -19,8 +19,8 @@
 
 <div class="kai-linear-progress-content">
   <div class="kai-linear-progress-header">
-    <span>{title}</span>
-    <span>{progress}/{max}</span>
+    <span>{label}</span>
+    <span class="indicator">{progress}/{max}</span>
   </div>
   <div class="kai-linear-progress-body">
     <div class="kai-linear-progress-track"></div>

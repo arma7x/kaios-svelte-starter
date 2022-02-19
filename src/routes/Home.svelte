@@ -17,6 +17,7 @@
   let multiSelector: any;
   let loadingBar: any;
   let progressValue: number = 0;
+  let sliderValue: number = 20;
 
   let navOptions = {
     verticalNavClass: navClass,
@@ -57,22 +58,32 @@
       console.log('arrowLeftListener', name);
       const navClasses = document.getElementsByClassName(navClass);
       if (navClasses[this.verticalNavIndex] != null) {
-        if (navClasses[this.verticalNavIndex].getAttribute('data-key') === 'progress-bar') {
+        const dataKey = navClasses[this.verticalNavIndex].getAttribute('data-key');
+        if (dataKey === 'linear-progress') {
           if (progressValue === 0)
             return;
           progressValue -= 10;
-        } 
+        } else if (dataKey === 'range-slider') {
+          if (sliderValue === 0)
+            return;
+          sliderValue -= 10;
+        }
       }
     },
     arrowRightListener: function(evt) {
       console.log('arrowRightListener', name);
       const navClasses = document.getElementsByClassName(navClass);
       if (navClasses[this.verticalNavIndex] != null) {
-        if (navClasses[this.verticalNavIndex].getAttribute('data-key') === 'progress-bar') {
+        const dataKey = navClasses[this.verticalNavIndex].getAttribute('data-key');
+        if (dataKey === 'linear-progress') {
           if (progressValue === 100)
             return;
           progressValue += 10;
-        } 
+        } else if (dataKey === 'range-slider') {
+          if (sliderValue === 100)
+            return;
+          sliderValue += 10;
+        }
       }
     },
   };
@@ -279,9 +290,15 @@
   <Separator title="Separator 2" />
   <ListView className="{navClass}" title="Single Selector" subtitle="Click to open single selector & focus on index 2" onClick={openSingleSelector}/>
   <ListView className="{navClass}" title="Multi Selector" subtitle="Click to open multi selector & focus on index 2" onClick={openMultiSelector}/>
-  <ListView key="progress-bar" className="{navClass}">
+  <ListView key="linear-progress" className="{navClass}">
     <slot>
-      <LinearProgress title="Linear Progress" value={progressValue} min={0} max={100}/>
+      <LinearProgress label="Linear Progress" value={progressValue} min={0} max={100}/>
+    </slot>
+    <span slot="rightWidget"></span>
+  </ListView>
+  <ListView key="range-slider" className="{navClass}">
+    <slot>
+      <RangeSlider label="Range Slider" value={sliderValue} min={0} max={100}/>
     </slot>
     <span slot="rightWidget"></span>
   </ListView>

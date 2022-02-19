@@ -1,7 +1,7 @@
 <script lang="ts">
 
   export let key:any = '';
-  export let title: string = '';
+  export let label: string = '';
   export let className:string = '';
   export let value: number = 0;
   export let min: number = 0;
@@ -17,25 +17,26 @@
 
 </script>
 
-<div class="kai-linear-progress-content">
-  <div class="kai-linear-progress-header">
-    <span>{title}</span>
-    <span>{progress}/{max}</span>
+<div class="kai-range-slider-content">
+  <div class="kai-range-slider-header">
+    <span>{label}</span>
+    <span class="indicator">{progress}/{max}</span>
   </div>
-  <div class="kai-linear-progress-body">
-    <div class="kai-linear-progress-track"></div>
-    <div class="kai-linear-progress-loaded" style="width:{progress}%;border-radius:{progress === 100 ? '4px' : '4px 0px 0px 4px'};"></div>
-    <div class="kai-linear-progress-thumb" style="left:calc({progress}% - 2px);visibility:{progress == 100 || progress == 0 ? 'hidden' : 'visible'};"></div>
+  <div class="kai-range-slider-body">
+    <div class="kai-range-slider-track"></div>
+    <div class="kai-range-slider-track-shadow"></div>
+    <div class="kai-range-slider-loaded" style="width:calc({progress}%);border-radius:4px;"></div>
+    <div class="kai-range-slider-thumb" style="left:calc({progress}%);"></div>
   </div>
 </div>
 
 <style>
 
-  .kai-linear-progress-content {
-    width: 100%;
+  .kai-range-slider-content {
+    width: calc(100% - 17px);
   }
 
-  .kai-linear-progress-content > .kai-linear-progress-header {
+  .kai-range-slider-content > .kai-range-slider-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -43,12 +44,16 @@
     margin-bottom: 8px;
   }
 
-  .kai-linear-progress-content > .kai-linear-progress-body {
+  .kai-range-slider-content > .kai-range-slider-header  > .indicator {
+    margin-right: -17px;
+  }
+
+  .kai-range-slider-content > .kai-range-slider-body {
     position: relative;
     width: 100%; 
   }
 
-  .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-track {
+  .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-track {
     width: 100%;
     background-color: #CCCCCC;
     height: 5px;
@@ -57,19 +62,29 @@
     position: absolute;
   }
 
-  .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-loaded {
+  .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-track-shadow {
+    width: calc(100% + 17px);
+    background-color: #CCCCCC;
+    height: 5px;
+    border-radius: 4px;
+    top: 0px;
+    position: absolute;
+  }
+
+  .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-loaded {
     background-color: var(--themeColor);
     height: 5px;
     top: 0px;
     position: absolute;
   }
 
-  .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-thumb {
-    background-color: #ffffff;
-    height: 5px;
-    width: 2px;
-    border-radius: 0px;
-    top: 0px;
+  .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-thumb {
+    background-color: var(--themeColor);
+    border: 3px solid #ffffff;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    top: -7px;
     position: absolute;
   }
 </style>

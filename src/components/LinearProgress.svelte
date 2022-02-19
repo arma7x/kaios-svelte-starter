@@ -51,7 +51,7 @@
   .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-track {
     width: 100%;
     background-color: #CCCCCC;
-    height: 5px;
+    height: 8px;
     border-radius: 4px;
     top: 0px;
     position: absolute;
@@ -59,14 +59,14 @@
 
   .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-loaded {
     background-color: var(--themeColor);
-    height: 5px;
+    height: 8px;
     top: 0px;
     position: absolute;
   }
 
   .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-thumb {
     background-color: #ffffff;
-    height: 5px;
+    height: 8px;
     width: 2px;
     border-radius: 0px;
     top: 0px;

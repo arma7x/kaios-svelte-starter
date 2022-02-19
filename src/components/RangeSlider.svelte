@@ -33,7 +33,7 @@
 <style>
 
   .kai-range-slider-content {
-    width: calc(100% - 17px);
+    width: calc(100% - 20px);
   }
 
   .kai-range-slider-content > .kai-range-slider-header {
@@ -45,7 +45,7 @@
   }
 
   .kai-range-slider-content > .kai-range-slider-header  > .indicator {
-    margin-right: -17px;
+    margin-right: -20px;
   }
 
   .kai-range-slider-content > .kai-range-slider-body {
@@ -56,16 +56,16 @@
   .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-track {
     width: 100%;
     background-color: #CCCCCC;
-    height: 5px;
+    height: 8px;
     border-radius: 4px;
     top: 0px;
     position: absolute;
   }
 
   .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-track-shadow {
-    width: calc(100% + 17px);
+    width: calc(100% + 20px);
     background-color: #CCCCCC;
-    height: 5px;
+    height: 8px;
     border-radius: 4px;
     top: 0px;
     position: absolute;
@@ -73,7 +73,7 @@
 
   .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-loaded {
     background-color: var(--themeColor);
-    height: 5px;
+    height: 8px;
     top: 0px;
     position: absolute;
   }
@@ -81,10 +81,10 @@
   .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-thumb {
     background-color: var(--themeColor);
     border: 3px solid #ffffff;
-    height: 17px;
-    width: 17px;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
-    top: -7px;
+    top: -6.5px;
     position: absolute;
   }
 </style>

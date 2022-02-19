@@ -10,6 +10,7 @@ import Radio from "./Radio.svelte";
 import Checkbox from "./Checkbox.svelte";
 import LoadingBar from "./LoadingBar.svelte";
 import LinearProgress from "./LinearProgress.svelte";
+import Button from "./Button.svelte";
 import RangeSlider from "./RangeSlider.svelte";
 import { SvelteToast, toast } from '@zerodevx/svelte-toast'
 
@@ -26,6 +27,7 @@ export {
   Checkbox,
   LoadingBar,
   LinearProgress,
+  Button,
   RangeSlider,
   SvelteToast as Toast,
   toast as Toaster

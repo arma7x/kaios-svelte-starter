@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Toast, Toaster } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, Toast, Toaster } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -26,22 +26,7 @@
       console.log('softkeyLeftListener', name, this.verticalNavIndex);
     },
     softkeyRightListener: function(evt) {
-      const t = new Toast({
-        target: document.body,
-        props: {
-          options: {}
-        }
-      })
-      Toaster.push('I\'m out after 2 second' , {
-        dismissable: false,
-        intro: { y: -64 },
-        duration: 2000,
-        onpop: () => {
-          setTimeout(() => {
-            t.$destroy();
-          }, 4000);
-        }
-      })
+      toastMessage();
       console.log('softkeyRightListener', name, this.verticalNavIndex);
     },
     enterListener: function(evt) {
@@ -92,6 +77,25 @@
 
   function onClickHandler(value) {
     goto(value);
+  }
+
+  function toastMessage(text = 'I\'m out after 2 second') {
+    const t = new Toast({
+      target: document.body,
+      props: {
+        options: {}
+      }
+    })
+    Toaster.push(text , {
+      dismissable: false,
+      intro: { y: -64 },
+      duration: 2000,
+      onpop: () => {
+        setTimeout(() => {
+          t.$destroy();
+        }, 4000);
+      }
+    })
   }
 
   function showLoadingBar() {
@@ -267,6 +271,10 @@
     });
   }
 
+  function onButtonClick(evt) {
+    toastMessage('You click me!!')
+  }
+
   onMount(() => {
     console.log('onMount', name);
     const { appBar, softwareKey } = getParentProp();
@@ -306,6 +314,10 @@
   <Separator title="Separator 3" />
   <ListView className="{navClass}" title="Title Text No Subtitle 6"/>
   <ListView className="{navClass}" title="Title Text No Subtitle 7"/>
+  <Button className="{navClass}" text="Click Me" onClick={onButtonClick}>
+    <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>
+    <span slot="rightWidget" class="kai-icon-favorite-on" style="margin:0px 5px;"></span>
+  </Button>
 </main>
 
 <style>

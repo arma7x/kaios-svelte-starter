@@ -1,6 +1,13 @@
 :root {
   --themeColor: #ff3e00;
-  --toastContainerRight: 1.5rem;
+  --toastContainerTop: 26px;
+  --toastContainerRight: 0;
+  --toastWidth: 100vw;
+  --toastBarHeight: 0px;
+  --toastMinHeight: 30px;
+  --toastBackground: #2f2f2f;
+  --toastColor: #ffffff;
+  --toastBarBackground: var(--themeColor);
 }
 
 @font-face {

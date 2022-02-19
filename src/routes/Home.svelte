@@ -30,21 +30,14 @@
           options: {}
         }
       })
-      Toaster.push('I\'m out after 5 second' , {
+      Toaster.push('I\'m out after 2 second' , {
         dismissable: false,
-        theme: {
-          '--toastMinHeight': '40px',
-          '--toastBackground': '#2f2f2f',
-          '--toastColor': '#ffffff',
-          '--toastWidth': '80vw',
-          '--toastBarBackground': 'var(--themeColor)'
-        },
         intro: { y: -64 },
-        duration: 5000,
+        duration: 2000,
         onpop: () => {
           setTimeout(() => {
             t.$destroy();
-          }, 1000);
+          }, 4000);
         }
       })
       console.log('softkeyRightListener', name, this.verticalNavIndex);

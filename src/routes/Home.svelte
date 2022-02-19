@@ -272,7 +272,7 @@
   }
 
   function onButtonClick(evt) {
-    toastMessage('You click me!!')
+    window.close();
   }
 
   onMount(() => {
@@ -314,7 +314,7 @@
   <Separator title="Separator 3" />
   <ListView className="{navClass}" title="Title Text No Subtitle 6"/>
   <ListView className="{navClass}" title="Title Text No Subtitle 7"/>
-  <Button className="{navClass}" text="Click Me" onClick={onButtonClick}>
+  <Button className="{navClass}" text="Exit" onClick={onButtonClick}>
     <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>
     <span slot="rightWidget" class="kai-icon-favorite-on" style="margin:0px 5px;"></span>
   </Button>

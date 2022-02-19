@@ -28,7 +28,7 @@ A simple starter template for building a KaiOS app using Svelte and TypeScript.
 10. Time Picker
 11. ~~Loading Bar~~
 11. ~~Progress Bar~~
-12. Range Slider
+12. ~~Range Slider~~
 13. Button
 14. InputText
 15. TextArea

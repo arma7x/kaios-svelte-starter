@@ -6,8 +6,8 @@
   export let title: string = 'Date Picker';
   export let date: Date = new Date();
   export let monthLocalization: string[] = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-  export let softKeyLeftText: string = '';
-  export let softKeyCenterText: string = 'Close';
+  export let softKeyLeftText: string = 'cancel';
+  export let softKeyCenterText: string = 'Save';
   export let softKeyRightText: string = '';
   export let onEnter: Function = (evt, date: Date) => {};
   export let onBackspace: Function = (evt, date: Date) => {};

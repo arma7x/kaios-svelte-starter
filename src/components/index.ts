@@ -12,7 +12,8 @@ import LoadingBar from "./LoadingBar.svelte";
 import LinearProgress from "./LinearProgress.svelte";
 import Button from "./Button.svelte";
 import RangeSlider from "./RangeSlider.svelte";
-import TextInput from "./TextInput.svelte";
+import TextInputField from "./TextInputField.svelte";
+import TextAreaField from "./TextAreaField.svelte";
 import { SvelteToast, toast } from '@zerodevx/svelte-toast'
 
 export {
@@ -30,7 +31,8 @@ export {
   LinearProgress,
   Button,
   RangeSlider,
-  TextInput,
+  TextInputField,
+  TextAreaField,
   SvelteToast as Toast,
   toast as Toaster
 }

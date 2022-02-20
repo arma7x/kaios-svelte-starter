@@ -13,7 +13,7 @@
   {#if label}
   <label>{label}</label>
   {/if}
-  <input name="{label}" {type} {value} {placeholder} on:input={onInput} on:focus={onFocus} on:blur={onBlur}/>
+  <input name={label} type={type} value={value} placeholder={placeholder} on:input={onInput} on:focus={onFocus} on:blur={onBlur}/>
 </div>
 
 <style>

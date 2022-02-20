@@ -43,7 +43,7 @@
     padding: 0px;
     margin: 0px;
     font-weight: 400;
-    color: #252525;
+    color: #323232;
     font-size: 14px;
     text-align: start;
     height: 20px;
@@ -58,7 +58,7 @@
   .kai-list-view > .kai-list-view-content > small {
     padding: 0px;
     font-size: 12px;
-    color: #6B6B6B;
+    color: #6A6A6A;
     text-align: start;
     vertical-align: middle;
   }

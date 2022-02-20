@@ -2,6 +2,7 @@
   export let className: string = '';
   export let label: string = undefined;
   export let value: string = '';
+  export let type: string = 'text';
   export let placeholder: string = '';
   export let onInput: Function = (evt) => {}
   export let onFocus: Function = (evt) => {}
@@ -12,7 +13,7 @@
   {#if label}
   <label>{label}</label>
   {/if}
-  <input name="{label}" value={value} placeholder={placeholder} on:input={onInput} on:focus={onFocus} on:blur={onBlur}/>
+  <input name="{label}" {type} {value} {placeholder} on:input={onInput} on:focus={onFocus} on:blur={onBlur}/>
 </div>
 
 <style>

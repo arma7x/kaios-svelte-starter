@@ -344,7 +344,7 @@
   </ListView>
   <ListView className="{navClass}" title="Title Text No Subtitle 5"/>
   <Separator title="Separator 3" />
-  <TextInput className="{navClass}" label="Label" placeholder="Placeholder" value="Value" {onInput} {onFocus} {onBlur}/>
+  <TextInput className="{navClass}" label="Label" placeholder="Placeholder" value="Value" type="text" {onInput} {onFocus} {onBlur}/>
   <ListView className="{navClass}" title="Title Text No Subtitle 7"/>
   <Button className="{navClass}" text="Exit" onClick={onButtonClick}>
     <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>

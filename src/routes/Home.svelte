@@ -13,6 +13,7 @@
   let name: string = 'Home';
   let dialog: Dialog;
   let optionMenu: OptionMenu;
+  let optionMenuIndex:number = 0;
   let singleSelector: SingleSelector;
   let multiSelector: MultiSelector;
   let loadingBar: LoadingBar;
@@ -130,6 +131,12 @@
         title: 'Intro',
         body: `Svelte is a radical new approach to building user interfaces. Whereas traditional frameworks like React and Vue do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app. Instead of using techniques like virtual DOM diffing, Svelte writes code that surgically updates the DOM when the state of your app changes. We're proud that Svelte was recently voted the most loved web framework with the most satisfied developers in a pair of industry surveys. We think you'll love it too. Read the introductory blog post to learn more.`,
         softKeyCenterText: 'hide',
+        onSoftkeyLeft: (evt) => {
+          console.log('onSoftkeyLeft');
+        },
+        onSoftkeyRight: (evt) => {
+          console.log('onSoftkeyRight');
+        },
         onEnter: (evt) => {
           console.log('onEnter');
           dialog.$destroy();
@@ -156,7 +163,7 @@
       target: document.body,
       props: {
         title: 'Option Menu',
-        focusIndex: 2,
+        focusIndex: optionMenuIndex,
         options: [
           { title: 'Option Menu 0', subtitle: 'Option menu 0 subtitle' },
           { title: 'Option Menu 1', subtitle: 'Option menu 1 subtitle' },
@@ -165,11 +172,11 @@
           { title: 'Option Menu 4', subtitle: 'Option menu 4 subtitle' },
         ],
         softKeyCenterText: 'select',
-        onSoftkeyRight: (evt) => {
-          console.log('onSoftkeyRight', evt);
+        onSoftkeyRight: (evt, scope) => {
+          console.log('onSoftkeyRight', scope);
         },
-        onSoftkeyRight: (evt) => {
-          console.log('onSoftkeyRight', evt);
+        onSoftkeyLeft: (evt, scope) => {
+          console.log('onSoftkeyRight', scope);
         },
         onEnter: (evt, scope) => {
           console.log('onEnter', scope);
@@ -186,6 +193,7 @@
         },
         onClosed: (scope) => {
           console.log(scope);
+          optionMenuIndex = scope.index;
           navInstance.attachListener();
           optionMenu = null;
         }

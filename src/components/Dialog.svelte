@@ -8,10 +8,10 @@
   export let softKeyLeftText: string = '';
   export let softKeyCenterText: string = 'Close';
   export let softKeyRightText: string = '';
-  export let onEnter: Function = () => {};
-  export let onBackspace: Function = () => {};
-  export let onSoftkeyLeft: Function = () => {};
-  export let onSoftkeyRight: Function = () => {};
+  export let onEnter: Function = (evt) => {};
+  export let onBackspace: Function = (evt) => {};
+  export let onSoftkeyLeft: Function = (evt) => {};
+  export let onSoftkeyRight: Function = (evt) => {};
   export let onOpened: Function = () => {};
   export let onClosed: Function = () => {};
 
@@ -46,11 +46,13 @@
       if (onSoftkeyLeft == null)
         return;
       console.log('softkeyLeftListener', title);
+      onSoftkeyLeft(evt);
     },
     softkeyRightListener: function(evt) {
       if (onSoftkeyRight == null)
         return;
       console.log('softkeyRightListener', title);
+      onSoftkeyRight(evt);
     },
     enterListener: function(evt) {
       if (onEnter == null)

@@ -12,12 +12,12 @@
   export let softKeyLeftText: string = '';
   export let softKeyCenterText: string = 'Close';
   export let softKeyRightText: string = '';
-  export let onEnter: Function = () => {};
-  export let onBackspace: Function = () => {};
-  export let onSoftkeyLeft: Function = () => {};
-  export let onSoftkeyRight: Function = () => {};
+  export let onEnter: Function = (evt, scope) => {};
+  export let onBackspace: Function = (evt, scope) => {};
+  export let onSoftkeyLeft: Function = (evt, scope) => {};
+  export let onSoftkeyRight: Function = (evt, scope) => {};
   export let onOpened: Function = () => {};
-  export let onClosed: Function = () => {};
+  export let onClosed: Function = (scope) => {};
 
   let softwareKey: SoftwareKey;
 
@@ -31,13 +31,13 @@
       if (onSoftkeyLeft == null)
         return;
       console.log('softkeyLeftListener', title);
-      onSoftkeyLeft(evt);
+      onSoftkeyLeft(evt, {index: this.verticalNavIndex, selected: options[this.verticalNavIndex]});
     },
     softkeyRightListener: function(evt) {
       if (onSoftkeyRight == null)
         return;
       console.log('softkeyRightListener', title);
-      onSoftkeyRight(evt);
+      onSoftkeyRight(evt, {index: this.verticalNavIndex, selected: options[this.verticalNavIndex]});
     },
     enterListener: function(evt) {
       if (onEnter == null)
@@ -71,11 +71,10 @@
   })
 
   onDestroy(() => {
-    const idx = navInstance.verticalNavIndex;
     console.log('onDestroy', title);
     navInstance.detachListener();
     softwareKey.$destroy();
-    onClosed({index: idx, selected: options[idx]});
+    onClosed({index: navInstance.verticalNavIndex, selected: options[navInstance.verticalNavIndex]});
   })
 
 </script>

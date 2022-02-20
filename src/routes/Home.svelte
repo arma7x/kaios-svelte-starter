@@ -332,13 +332,13 @@
   <ListView className="{navClass}" title="Multi Selector" subtitle="Click to open multi selector & focus on index 2" onClick={openMultiSelector}/>
   <ListView key="linear-progress" className="{navClass}">
     <slot>
-      <LinearProgress label="Linear Progress" value={progressValue} min={0} max={100}/>
+      <LinearProgress label="Linear Progress" value={progressValue} min={0} max={100} progressType={1}/>
     </slot>
     <span slot="rightWidget"></span>
   </ListView>
   <ListView key="range-slider" className="{navClass}">
     <slot>
-      <RangeSlider label="Range Slider" value={sliderValue} min={0} max={100}/>
+      <RangeSlider label="Range Slider" value={sliderValue} min={0} max={100} progressType={2}/>
     </slot>
     <span slot="rightWidget"></span>
   </ListView>

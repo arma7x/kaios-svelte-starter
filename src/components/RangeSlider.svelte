@@ -1,6 +1,7 @@
 <script lang="ts">
 
   export let key:any = '';
+  export let progressType:number = 0; // 0:NONE, 1:PERCENTAGE, 2:COUNTER
   export let label: string = '';
   export let className:string = '';
   export let value: number = 0;
@@ -18,10 +19,16 @@
 </script>
 
 <div class="kai-range-slider-content">
+  {#if progressType != 0 || label != null}
   <div class="kai-range-slider-header">
-    <span>{label}</span>
-    <span class="indicator">{progress}/{max}</span>
+    <span>{label == null ? '' : label}</span>
+    {#if progressType == 1}
+    <span class="indicator">{progress}%</span>
+    {:else if progressType == 2}
+    <span class="indicator">{value}/{max}</span>
+    {/if}
   </div>
+  {/if}
   <div class="kai-range-slider-body">
     <div class="kai-range-slider-track"></div>
     <div class="kai-range-slider-track-shadow"></div>
@@ -33,7 +40,7 @@
 <style>
 
   .kai-range-slider-content {
-    margin-top: -10px;
+    margin-top: -16px;
     width: calc(100% - 22px);
   }
 

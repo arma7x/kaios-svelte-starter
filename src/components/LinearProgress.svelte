@@ -1,6 +1,7 @@
 <script lang="ts">
 
   export let key:any = '';
+  export let progressType:number = 0; // 0:NONE, 1:PERCENTAGE, 2:COUNTER
   export let label: string = '';
   export let className:string = '';
   export let value: number = 0;
@@ -18,10 +19,16 @@
 </script>
 
 <div class="kai-linear-progress-content">
+  {#if progressType != 0 || label != null}
   <div class="kai-linear-progress-header">
-    <span>{label}</span>
-    <span class="indicator">{progress}/{max}</span>
+    <span>{label == null ? '' : label}</span>
+    {#if progressType == 1}
+    <span class="indicator">{progress}%</span>
+    {:else if progressType == 2}
+    <span class="indicator">{value}/{max}</span>
+    {/if}
   </div>
+  {/if}
   <div class="kai-linear-progress-body">
     <div class="kai-linear-progress-track"></div>
     <div class="kai-linear-progress-loaded" style="width:{progress}%;border-radius:{progress === 100 ? '4px' : '4px 0px 0px 4px'};"></div>
@@ -32,7 +39,7 @@
 <style>
 
   .kai-linear-progress-content {
-    margin-top: -10px;
+    margin-top: -16px;
     width: 100%;
   }
 

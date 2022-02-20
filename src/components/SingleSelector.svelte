@@ -42,7 +42,7 @@
     enterListener: function(evt) {
       console.log('enterListener', title);
       if (options[this.verticalNavIndex].selected) {
-        onEnter();
+        onEnter(evt, {options});
         return;
       }
       const navClasses = document.getElementsByClassName(navClass);

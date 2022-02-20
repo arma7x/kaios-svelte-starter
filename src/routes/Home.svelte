@@ -33,6 +33,7 @@
   let loadingBar: LoadingBar;
   let inputSoftwareKey: SoftwareKey;
   let datePicker: DatePicker;
+  let datePickerValue: Date = new Date(1582227193963);
   let progressValue: number = 0;
   let sliderValue: number = 20;
 
@@ -299,22 +300,23 @@
       target: document.body,
       props: {
         title: 'Date Picker',
-        date: new Date(),
+        date: datePickerValue,
         softKeyLeftText: 'Cancel',
         softKeyCenterText: 'save',
-        onSoftkeyLeft: (evt) => {
-          console.log('onSoftkeyLeft');
+        onSoftkeyLeft: (evt, date) => {
+          console.log('onSoftkeyLeft', date);
           datePicker.$destroy();
         },
-        onSoftkeyRight: (evt) => {
-          console.log('onSoftkeyRight');
+        onSoftkeyRight: (evt, date) => {
+          console.log('onSoftkeyRight', date);
         },
-        onEnter: (evt) => {
-          console.log('onEnter');
+        onEnter: (evt, date) => {
+          console.log('onEnter', date);
+          datePickerValue = date;
           datePicker.$destroy();
         },
-        onBackspace: (evt) => {
-          console.log('onBackspace');
+        onBackspace: (evt, date) => {
+          console.log('onBackspace', date);
           evt.preventDefault();
           evt.stopPropagation();
           datePicker.$destroy();
@@ -322,7 +324,8 @@
         onOpened: () => {
           navInstance.detachListener();
         },
-        onClosed: () => {
+        onClosed: (date) => {
+          console.log('onClosed', date);
           navInstance.attachListener();
           datePicker = null;
         }
@@ -414,7 +417,9 @@
   <ListView className="{navClass}" title="Radio" subtitle="Please click me" onClick={propagateClick}>
     <Radio slot="rightWidget" key="radio" selected="{true}" onChange={onRadioCheckboxChange} />
   </ListView>
-  <ListView className="{navClass}" title="Date Picker" subtitle="Click to open date picker" onClick={openDatePicker}/>
+  <ListView className="{navClass}" title="Date Picker" subtitle="Click to open date picker, {datePickerValue.toDateString()}" onClick={openDatePicker}>
+    <span slot="rightWidget" class="kai-icon-calendar" style="font-size:20px;"></span>
+  </ListView>
   <Button className="{navClass}" text="Exit" onClick={onButtonClick}>
     <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>
     <span slot="rightWidget" class="kai-icon-favorite-on" style="margin:0px 5px;"></span>

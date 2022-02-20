@@ -10,7 +10,7 @@
   };
 </script>
 
-<span class="{checked ? 'kai-icon-checkbox-checked' : 'kai-icon-checkbox-unchecked'}" on:click={onClick}></span>
+<span style="font-size:20px;" class="{checked ? 'kai-icon-checkbox-checked' : 'kai-icon-checkbox-unchecked'}" on:click={onClick}></span>
 
 <style>
 </style>

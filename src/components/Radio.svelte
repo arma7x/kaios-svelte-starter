@@ -10,7 +10,7 @@
   };
 </script>
 
-<span class="{selected ? 'kai-icon-radio-button-selected' : 'kai-icon-radio-button-unselected'}" on:click={onClick}></span>
+<span style="font-size:20px;" class="{selected ? 'kai-icon-radio-button-selected' : 'kai-icon-radio-button-unselected'}" on:click={onClick}></span>
 
 <style>
 </style>

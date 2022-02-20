@@ -15,7 +15,21 @@
   let optionMenu: OptionMenu;
   let optionMenuIndex:number = 0;
   let singleSelector: SingleSelector;
+  let singleSelectorOptions:any = [
+    { title: 'Single Selector 0', subtitle: 'Single selector 0 subtitle', selected: true },
+    { title: 'Single Selector 1', subtitle: 'Single selector 1 subtitle', selected: false },
+    { title: 'Single Selector 2', subtitle: 'Single selector 2 subtitle', selected: false },
+    { title: 'Single Selector 3', subtitle: 'Single selector 3 subtitle', selected: false },
+    { title: 'Single Selector 4', subtitle: 'Single selector 4 subtitle', selected: false },
+  ];
   let multiSelector: MultiSelector;
+  let multiSelectorOptions:any = [
+    { title: 'Multi Selector 0', subtitle: 'Multi selector 0 subtitle', checked: true },
+    { title: 'Multi Selector 1', subtitle: 'Multi selector 1 subtitle', checked: false },
+    { title: 'Multi Selector 2', subtitle: 'Multi selector 2 subtitle', checked: false },
+    { title: 'Multi Selector 3', subtitle: 'Multi selector 3 subtitle', checked: false },
+    { title: 'Multi Selector 4', subtitle: 'Multi selector 4 subtitle', checked: false },
+  ];
   let loadingBar: LoadingBar;
   let inputSoftwareKey: SoftwareKey;
   let progressValue: number = 0;
@@ -202,21 +216,19 @@
   }
 
   function openSingleSelector() {
+    const idx = singleSelectorOptions.findIndex((o) => {
+      return o.selected;
+    })
     singleSelector = new SingleSelector({
       target: document.body,
       props: {
         title: 'Single Selector',
-        focusIndex: 2,
-        options: [
-          { title: 'Single Selector 0', subtitle: 'Single selector 0 subtitle', selected: true },
-          { title: 'Single Selector 1', subtitle: 'Single selector 1 subtitle', selected: false },
-          { title: 'Single Selector 2', subtitle: 'Single selector 2 subtitle', selected: false },
-          { title: 'Single Selector 3', subtitle: 'Single selector 3 subtitle', selected: false },
-          { title: 'Single Selector 4', subtitle: 'Single selector 4 subtitle', selected: false },
-        ],
+        focusIndex: idx,
+        options: singleSelectorOptions,
         softKeyCenterText: 'select',
         onEnter: (evt, scope) => {
           console.log('onEnter', scope);
+          singleSelectorOptions = scope.options;
           evt.preventDefault();
           evt.stopPropagation();
           singleSelector.$destroy();
@@ -244,14 +256,8 @@
       target: document.body,
       props: {
         title: 'Multi Selector',
-        focusIndex: 2,
-        options: [
-          { title: 'Multi Selector 0', subtitle: 'Multi selector 0 subtitle', checked: true },
-          { title: 'Multi Selector 1', subtitle: 'Multi selector 1 subtitle', checked: false },
-          { title: 'Multi Selector 2', subtitle: 'Multi selector 2 subtitle', checked: false },
-          { title: 'Multi Selector 3', subtitle: 'Multi selector 3 subtitle', checked: false },
-          { title: 'Multi Selector 4', subtitle: 'Multi selector 4 subtitle', checked: false },
-        ],
+        focusIndex: 0,
+        options: multiSelectorOptions,
         softKeyLeftText: 'Cancel',
         softKeyRightText: 'Done',
         softKeyCenterTextSelect: 'select',
@@ -264,6 +270,7 @@
         },
         onSoftkeyRight: (evt, scope) => {
           console.log('onSoftkeyRight', scope);
+          multiSelectorOptions = scope.options;
           evt.preventDefault();
           evt.stopPropagation();
           multiSelector.$destroy();

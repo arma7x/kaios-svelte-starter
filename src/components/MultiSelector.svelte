@@ -9,14 +9,14 @@
   export let focusIndex: number = 0;
   export let options: { title: string, subtitle: string, checked: boolean }[];
   export let softKeyLeftText: string = '';
-  export let softKeyCenterTextSelect: string = '';
-  export let softKeyCenterTextDeselect: string = '';
+  export let softKeyCenterTextSelect: string = 'SELECT';
+  export let softKeyCenterTextDeselect: string = 'DESELECT';
   export let softKeyRightText: string = '';
-  export let onBackspace: Function = () => {};
-  export let onSoftkeyLeft: Function = () => {};
-  export let onSoftkeyRight: Function = () => {};
+  export let onBackspace: Function = (evt, scope) => {};
+  export let onSoftkeyLeft: Function = (evt, scope) => {};
+  export let onSoftkeyRight: Function = (evt, scope) => {};
   export let onOpened: Function = () => {};
-  export let onClosed: Function = () => {};
+  export let onClosed: Function = (scope) => {};
 
   export function setTitleText(text) {
     title = text;
@@ -77,9 +77,9 @@
 
   function renderCenterKey(index) {
     if (options[index].checked) {
-      softwareKey.setCenterText('DESELECT');
+      softwareKey.setCenterText(softKeyCenterTextDeselect);
     } else {
-      softwareKey.setCenterText('SELECT');
+      softwareKey.setCenterText(softKeyCenterTextSelect);
     }
   }
 

@@ -11,12 +11,12 @@
   export let softKeyLeftText: string = '';
   export let softKeyCenterText: string = 'SELECT';
   export let softKeyRightText: string = '';
-  export let onEnter: Function = () => {};
-  export let onBackspace: Function = () => {};
-  export let onSoftkeyLeft: Function = () => {};
-  export let onSoftkeyRight: Function = () => {};
+  export let onEnter: Function = (evt, scope) => {};
+  export let onBackspace: Function = (evt, scope) => {};
+  export let onSoftkeyLeft: Function = (evt, scope) => {};
+  export let onSoftkeyRight: Function = (evt, scope) => {};
   export let onOpened: Function = () => {};
-  export let onClosed: Function = () => {};
+  export let onClosed: Function = (scope) => {};
 
   export function setTitleText(text) {
     title = text;

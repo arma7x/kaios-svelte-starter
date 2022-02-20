@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, TextInputField, TextAreaField, Radio, Checkbox, Toast, Toaster, SoftwareKey } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, TextInputField, TextAreaField, Radio, Checkbox, DatePicker, Toast, Toaster, SoftwareKey } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -32,6 +32,7 @@
   ];
   let loadingBar: LoadingBar;
   let inputSoftwareKey: SoftwareKey;
+  let datePicker: DatePicker;
   let progressValue: number = 0;
   let sliderValue: number = 20;
 
@@ -293,6 +294,42 @@
     });
   }
 
+  function openDatePicker() {
+    datePicker = new DatePicker({
+      target: document.body,
+      props: {
+        title: 'Date Picker',
+        date: new Date(),
+        softKeyLeftText: 'Cancel',
+        softKeyCenterText: 'save',
+        onSoftkeyLeft: (evt) => {
+          console.log('onSoftkeyLeft');
+          datePicker.$destroy();
+        },
+        onSoftkeyRight: (evt) => {
+          console.log('onSoftkeyRight');
+        },
+        onEnter: (evt) => {
+          console.log('onEnter');
+          datePicker.$destroy();
+        },
+        onBackspace: (evt) => {
+          console.log('onBackspace');
+          evt.preventDefault();
+          evt.stopPropagation();
+          datePicker.$destroy();
+        },
+        onOpened: () => {
+          navInstance.detachListener();
+        },
+        onClosed: () => {
+          navInstance.attachListener();
+          datePicker = null;
+        }
+      }
+    });
+  }
+
   function onButtonClick(evt) {
     window.close();
   }
@@ -377,6 +414,7 @@
   <ListView className="{navClass}" title="Radio" subtitle="Please click me" onClick={propagateClick}>
     <Radio slot="rightWidget" key="radio" selected="{true}" onChange={onRadioCheckboxChange} />
   </ListView>
+  <ListView className="{navClass}" title="Date Picker" subtitle="Click to open date picker" onClick={openDatePicker}/>
   <Button className="{navClass}" text="Exit" onClick={onButtonClick}>
     <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>
     <span slot="rightWidget" class="kai-icon-favorite-on" style="margin:0px 5px;"></span>

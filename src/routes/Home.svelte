@@ -257,7 +257,7 @@
       props: {
         title: 'Multi Selector',
         focusIndex: 0,
-        options: multiSelectorOptions,
+        options: JSON.parse(JSON.stringify(multiSelectorOptions)),
         softKeyLeftText: 'Cancel',
         softKeyRightText: 'Done',
         softKeyCenterTextSelect: 'select',

@@ -79,7 +79,7 @@
 
 </script>
 
-<svelte:options accessors/>
+<svelte:options accessors immutable={true}/>
 
 <div class="kai-option-menu">
   <div class="kai-option-menu-content">

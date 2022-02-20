@@ -339,12 +339,8 @@
 
 <main id="home-screen" data-pad-top="28" data-pad-bottom="30">
   <ListView className="{navClass}" title="Room" subtitle="Goto room screen" onClick={() => onClickHandler('room')}/>
-  <Separator title="Separator 1" />
+  <Separator title="Progress" />
   <ListView className="{navClass}" title="Loading Bar" subtitle="Display loading bar & freeze keydown for 3 seconds" onClick={showLoadingBar} />
-  <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu & focus on index 2" onClick={openOptionMenu}/>
-  <Separator title="Separator 2" />
-  <ListView className="{navClass}" title="Single Selector" subtitle="Click to open single selector & focus on index 2" onClick={openSingleSelector}/>
-  <ListView className="{navClass}" title="Multi Selector" subtitle="Click to open multi selector & focus on index 2" onClick={openMultiSelector}/>
   <ListView key="linear-progress" className="{navClass}">
     <slot>
       <LinearProgress label="Linear Progress" value={progressValue} min={0} max={100} progressType={1}/>
@@ -357,11 +353,13 @@
     </slot>
     <span slot="rightWidget"></span>
   </ListView>
-  <ListView className="{navClass}" title="Title Text No Subtitle 5"/>
-  <Separator title="Separator 3" />
+  <Separator title="Dialog" />
+  <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu & focus on index 2" onClick={openOptionMenu}/>
+  <ListView className="{navClass}" title="Single Selector" subtitle="Click to open single selector & focus on index 2" onClick={openSingleSelector}/>
+  <ListView className="{navClass}" title="Multi Selector" subtitle="Click to open multi selector & focus on index 2" onClick={openMultiSelector}/>
+  <Separator title="Input" />
   <TextInputField className="{navClass}" label="TextInput" placeholder="Placeholder" value="Value" type="text" {onInput} {onFocus} {onBlur} />
   <TextAreaField className="{navClass}" label="TextArea" placeholder="Placeholder" value="Value" type="text" rows={4} {onInput} {onFocus} {onBlur}/>
-  <ListView className="{navClass}" title="Title Text No Subtitle 7"/>
   <Button className="{navClass}" text="Exit" onClick={onButtonClick}>
     <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>
     <span slot="rightWidget" class="kai-icon-favorite-on" style="margin:0px 5px;"></span>

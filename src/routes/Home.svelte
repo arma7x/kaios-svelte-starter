@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, TextInputField, TextAreaField, Toast, Toaster, SoftwareKey } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, TextInputField, TextAreaField, Radio, Checkbox, Toast, Toaster, SoftwareKey } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -322,6 +322,17 @@
     }
   }
 
+  function propagateClick(evt) {
+    const keys = Object.keys(evt.target.children);
+    for (var k in keys) {
+      evt.target.children[k].click();
+    }
+  }
+
+  function onRadioCheckboxChange(scope) {
+    console.log(scope);
+  }
+
   onMount(() => {
     console.log('onMount', name);
     const { appBar, softwareKey } = getParentProp();
@@ -360,6 +371,12 @@
   <Separator title="Input" />
   <TextInputField className="{navClass}" label="TextInput" placeholder="Placeholder" value="Value" type="text" {onInput} {onFocus} {onBlur} />
   <TextAreaField className="{navClass}" label="TextArea" placeholder="Placeholder" value="Value" type="text" rows={4} {onInput} {onFocus} {onBlur}/>
+  <ListView className="{navClass}" title="Checkbox" subtitle="Please click me" onClick={propagateClick}>
+    <Checkbox slot="rightWidget" key="checkbox" checked="{true}" onChange={onRadioCheckboxChange} />
+  </ListView>
+  <ListView className="{navClass}" title="Radio" subtitle="Please click me" onClick={propagateClick}>
+    <Radio slot="rightWidget" key="radio" selected="{true}" onChange={onRadioCheckboxChange} />
+  </ListView>
   <Button className="{navClass}" text="Exit" onClick={onButtonClick}>
     <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>
     <span slot="rightWidget" class="kai-icon-favorite-on" style="margin:0px 5px;"></span>

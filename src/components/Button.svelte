@@ -26,7 +26,7 @@
     text-align: center;
     margin: 10px auto;
     padding: 0 5px;
-    width: calc(100% - 20px);
+    width: calc(100% - 15px);
     font-weight: 600;
   }
 

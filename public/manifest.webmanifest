@@ -5,6 +5,7 @@
   "theme": "#ff3e00",
   "theme_color": "#ff3e00",
   "background_color": "#ff3e00",
+  "display": "fullscreen",
   "orientation": "default",
   "categories": [
     "utilities"
@@ -29,6 +30,9 @@
     "developer": {
       "name": "arma7x",
       "url": "https://github.com/arma7x/kaios-svelte-starter"
+    },
+    "chrome": {
+      "statusbar": "overlap"
     },
     "origin": "svelte-app",
     "permissions": {},

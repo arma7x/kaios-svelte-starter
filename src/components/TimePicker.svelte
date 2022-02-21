@@ -59,7 +59,7 @@
       cursor.nextElementSibling.textContent= date.getHours() + 1 > 23 ? '' : formatInteger(date.getHours() + 1);
     } else {
       var hours = (date.getHours() % 12) || 12;
-      cursor.previousElementSibling.textContent = formatInteger(hours - 1) || '';
+      cursor.previousElementSibling.textContent = hours - 1 ? formatInteger(hours - 1) : '';
       cursor.textContent = formatInteger(hours);
       cursor.nextElementSibling.textContent = hours + 1 > 12 ? '' : formatInteger(hours + 1);
     }

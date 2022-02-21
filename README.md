@@ -15,7 +15,7 @@ A simple starter template for building a KaiOS app using Svelte and TypeScript.
 3. In WebIDE, load the `/public` folder as a packaged app.
 4. Or, `npm run dev` then visit `localhost:port/index.html`
 
-Built-in components:
+### Built-in components:
 1. Dialog
 2. ListView
 3. Separator

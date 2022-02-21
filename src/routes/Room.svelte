@@ -45,22 +45,40 @@
 
 </script>
 
-<div>
+<main id="room-screen" data-pad-top="28" data-pad-bottom="30">
   <h1>Hello {name}!</h1>
-  <div style="display:flex;flex-direction:column;">
-    <a href="#" class="vertClass">Vert 1</a>
-    <a href="#" class="vertClass">Vert 2</a>
+  <div class="vertical">
+    <div class="vertClass">Vertical 1</div>
+    <div class="vertClass">Vertical 2</div>
   </div>
-  <div style="width:100%;display:flex;flex-direction:row;">
-    <a href="#" style="flex:1;" class="horzClass">Horz 1</a>
-    <a href="#" style="flex:1;" class="horzClass">Horz 2</a>
+  <div class="horizontal">
+    <div style="flex:1;" class="horzClass">Horizontal 1</div>
+    <div style="flex:1;" class="horzClass">Horizontal 2</div>
   </div>
-</div>
+</main>
 
 <style>
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-weight: 100;
+  #room-screen {
+    overflow: scroll;
+    width: 100%;
+  }
+  #room-screen > .vertical {
+    display:flex;
+    flex-direction:column;
+  }
+  #room-screen > .horizontal {
+    width:100%;
+    display:flex;
+    flex-direction:row;
+  }
+  #room-screen > .vertical > .vertClass
+  #room-screen > .vertical > .horizontal {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  :global(#room-screen > .vertical > .vertClass.focus),
+  :global(#room-screen > .horizontal > .horzClass.focus) {
+    background-color: red!important;
+    color: #fff!important;
   }
 </style>

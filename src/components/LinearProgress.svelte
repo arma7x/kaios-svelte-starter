@@ -80,4 +80,16 @@
     top: 0px;
     position: absolute;
   }
+
+  :global(.kai-list-view.focus > .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-track) {
+    background-color: #8C8C8C!important;
+  }
+
+  :global(.kai-list-view.focus > .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-loaded) {
+    background-color: #ffffff!important;
+  }
+
+  :global(.kai-list-view.focus > .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-thumb) {
+    background-color: var(--themeColor)!important;
+  }
 </style>

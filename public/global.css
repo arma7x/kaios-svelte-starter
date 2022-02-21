@@ -187,32 +187,3 @@ button:not(:disabled):active {
 button:focus {
   border-color: #666;
 }
-
-._toastItem {
-  text-align: center!important;
-}
-
-.kai-list-view.focus > .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-track {
-  background-color: #8C8C8C!important;
-}
-
-.kai-list-view.focus > .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-loaded {
-  background-color: #ffffff!important;
-}
-
-.kai-list-view.focus > .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-thumb {
-  background-color: var(--themeColor)!important;
-}
-
-.kai-list-view.focus > .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-track {
-  background-color: #8C8C8C!important;
-}
-
-.kai-list-view.focus > .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-loaded {
-  background-color: #ffffff!important;
-}
-
-.kai-list-view.focus > .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-thumb {
-  background-color: #ffffff!important;
-  border: 3px solid var(--themeColor)!important;
-}

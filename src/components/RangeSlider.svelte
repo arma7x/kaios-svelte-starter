@@ -95,4 +95,17 @@
     top: -7px;
     position: absolute;
   }
+
+  :global(.kai-list-view.focus > .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-track) {
+    background-color: #8C8C8C!important;
+  }
+
+  :global(.kai-list-view.focus > .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-loaded) {
+    background-color: #ffffff!important;
+  }
+
+  :global(.kai-list-view.focus > .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-thumb) {
+    background-color: #ffffff!important;
+    border: 3px solid var(--themeColor)!important;
+  }
 </style>

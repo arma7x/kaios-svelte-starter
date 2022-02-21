@@ -543,8 +543,8 @@
     <span slot="rightWidget" class="kai-icon-message" style="font-size:20px;"></span>
   </ListView>
   <Button className="{navClass}" text="Exit" onClick={onButtonClick}>
-    <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>
-    <span slot="rightWidget" class="kai-icon-favorite-on" style="margin:0px 5px;"></span>
+    <span slot="leftWidget" class="kai-icon-arrow" style="margin:0px 5px;-moz-transform: scale(-1, 1);-webkit-transform: scale(-1, 1);-o-transform: scale(-1, 1);-ms-transform: scale(-1, 1);transform: scale(-1, 1);"></span>
+    <span slot="rightWidget" class="kai-icon-arrow" style="margin:0px 5px;"></span>
   </Button>
 </main>
 

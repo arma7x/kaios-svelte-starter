@@ -48,4 +48,7 @@
     height: calc(100% - 84px);
     overflow: scroll;
   }
+  :global(._toastItem) {
+    text-align: center!important;
+  }
 </style>

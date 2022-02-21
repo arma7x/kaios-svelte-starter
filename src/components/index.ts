@@ -14,6 +14,8 @@ import Button from "./Button.svelte";
 import RangeSlider from "./RangeSlider.svelte";
 import TextInputField from "./TextInputField.svelte";
 import TextAreaField from "./TextAreaField.svelte";
+import TextInputDialog from "./TextInputDialog.svelte";
+import TextAreaDialog from "./TextAreaDialog.svelte";
 import DatePicker from "./DatePicker.svelte";
 import TimePicker from "./TimePicker.svelte";
 import { SvelteToast, toast } from '@zerodevx/svelte-toast'
@@ -35,6 +37,8 @@ export {
   RangeSlider,
   TextInputField,
   TextAreaField,
+  TextInputDialog,
+  TextAreaDialog,
   DatePicker,
   TimePicker,
   SvelteToast as Toast,

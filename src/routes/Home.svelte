@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, TextInputField, TextAreaField, Radio, Checkbox, DatePicker, TimePicker, Toast, Toaster, SoftwareKey } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, TextInputField, TextAreaField, TextInputDialog, TextAreaDialog, Radio, Checkbox, DatePicker, TimePicker, Toast, Toaster, SoftwareKey } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -35,6 +35,8 @@
   let datePicker: DatePicker;
   let datePickerValue: Date = new Date(1582227193963);
   let timePicker: DatePicker;
+  let textInputDialog: TextInputDialog;
+  let textAreaDialog: TextAreaDialog;
   let progressValue: number = 0;
   let sliderValue: number = 20;
 
@@ -373,6 +375,77 @@
     });
   }
 
+  function openTextInputDialog() {
+    textInputDialog = new TextInputDialog({
+      target: document.body,
+      props: {
+        title: 'TextInputDialog',
+        softKeyCenterText: 'ok',
+        value: 'Value',
+        placeholder: 'Placeholder',
+        type: 'text',
+        onSoftkeyLeft: (evt, value) => {
+          console.log('onSoftkeyLeft', value);
+        },
+        onSoftkeyRight: (evt, value) => {
+          console.log('onSoftkeyRight', value);
+        },
+        onEnter: (evt, value) => {
+          console.log('onEnter', value);
+          textInputDialog.$destroy();
+        },
+        onBackspace: (evt, value) => {
+          console.log('onBackspace', value);
+          evt.stopPropagation();
+        },
+        onOpened: () => {
+          navInstance.detachListener();
+        },
+        onClosed: (value) => {
+          console.log('onClosed', value)
+          navInstance.attachListener();
+          textInputDialog = null;
+        }
+      }
+    });
+  }
+
+  function openTextAreaDialog() {
+    textAreaDialog = new TextAreaDialog({
+      target: document.body,
+      props: {
+        title: 'TextAreaDialog',
+        softKeyCenterText: 'ok',
+        value: 'Value',
+        placeholder: 'Placeholder',
+        type: 'text',
+        rows: 3,
+        onSoftkeyLeft: (evt, value) => {
+          console.log('onSoftkeyLeft', value);
+        },
+        onSoftkeyRight: (evt, value) => {
+          console.log('onSoftkeyRight', value);
+        },
+        onEnter: (evt, value) => {
+          console.log('onEnter', value);
+          textAreaDialog.$destroy();
+        },
+        onBackspace: (evt, value) => {
+          console.log('onBackspace', value);
+          evt.stopPropagation();
+        },
+        onOpened: () => {
+          navInstance.detachListener();
+        },
+        onClosed: (value) => {
+          console.log('onClosed', value)
+          navInstance.attachListener();
+          textAreaDialog = null;
+        }
+      }
+    });
+  }
+
   function onButtonClick(evt) {
     window.close();
   }
@@ -462,6 +535,12 @@
   </ListView>
   <ListView className="{navClass}" title="Time Picker" subtitle="Click to open time picker, {datePickerValue.toLocaleTimeString()}" onClick={openTimePicker}>
     <span slot="rightWidget" class="kai-icon-favorite-on" style="font-size:20px;"></span>
+  </ListView>
+  <ListView className="{navClass}" title="Text Input Dialog" subtitle="Open text input dialog" onClick={openTextInputDialog}>
+    <span slot="rightWidget" class="kai-icon-search" style="font-size:20px;"></span>
+  </ListView>
+  <ListView className="{navClass}" title="Text Area Dialog" subtitle="Open text area dialog" onClick={openTextAreaDialog}>
+    <span slot="rightWidget" class="kai-icon-message" style="font-size:20px;"></span>
   </ListView>
   <Button className="{navClass}" text="Exit" onClick={onButtonClick}>
     <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>

@@ -32,6 +32,6 @@ A simple starter template for building a KaiOS app using Svelte and TypeScript.
 13. ~~Button~~
 14. ~~InputText~~
 15. ~~TextArea~~
-14. InputTextDialog(Extra/WIP)
-15. TextAreaDialog(Extra/WIP)
+14. ~~InputTextDialog~~
+15. ~~TextAreaDialog~~
 16. ~~Toaster(@zerodevx/svelte-toast)~~

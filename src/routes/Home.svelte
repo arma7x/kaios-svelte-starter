@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Route, navigate as goto } from "svelte-navigator";
   import { createKaiNavigator } from '../utils/navigation';
-  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, TextInputField, TextAreaField, Radio, Checkbox, DatePicker, Toast, Toaster, SoftwareKey } from '../components';
+  import { Dialog, OptionMenu, SingleSelector, MultiSelector, ListView, Separator, Radio, Checkbox, LoadingBar, LinearProgress, RangeSlider, Button, TextInputField, TextAreaField, Radio, Checkbox, DatePicker, TimePicker, Toast, Toaster, SoftwareKey } from '../components';
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
@@ -34,6 +34,7 @@
   let inputSoftwareKey: SoftwareKey;
   let datePicker: DatePicker;
   let datePickerValue: Date = new Date(1582227193963);
+  let timePicker: DatePicker;
   let progressValue: number = 0;
   let sliderValue: number = 20;
 
@@ -333,6 +334,45 @@
     });
   }
 
+  function openTimePicker() {
+    timePicker = new TimePicker({
+      target: document.body,
+      props: {
+        title: 'Time Picker',
+        date: datePickerValue,
+        is12HourSystem: true,
+        softKeyLeftText: 'Cancel',
+        softKeyCenterText: 'save',
+        onSoftkeyLeft: (evt, date) => {
+          console.log('onSoftkeyLeft', date);
+          timePicker.$destroy();
+        },
+        onSoftkeyRight: (evt, date) => {
+          console.log('onSoftkeyRight', date);
+        },
+        onEnter: (evt, date) => {
+          console.log('onEnter', date);
+          datePickerValue = date;
+          timePicker.$destroy();
+        },
+        onBackspace: (evt, date) => {
+          console.log('onBackspace', date);
+          evt.preventDefault();
+          evt.stopPropagation();
+          timePicker.$destroy();
+        },
+        onOpened: () => {
+          navInstance.detachListener();
+        },
+        onClosed: (date) => {
+          console.log('onClosed', date);
+          navInstance.attachListener();
+          timePicker = null;
+        }
+      }
+    });
+  }
+
   function onButtonClick(evt) {
     window.close();
   }
@@ -419,6 +459,9 @@
   </ListView>
   <ListView className="{navClass}" title="Date Picker" subtitle="Click to open date picker, {datePickerValue.toDateString()}" onClick={openDatePicker}>
     <span slot="rightWidget" class="kai-icon-calendar" style="font-size:20px;"></span>
+  </ListView>
+  <ListView className="{navClass}" title="Time Picker" subtitle="Click to open time picker, {datePickerValue.toLocaleTimeString()}" onClick={openTimePicker}>
+    <span slot="rightWidget" class="kai-icon-favorite-on" style="font-size:20px;"></span>
   </ListView>
   <Button className="{navClass}" text="Exit" onClick={onButtonClick}>
     <span slot="leftWidget" class="kai-icon-message" style="margin:0px 5px;"></span>

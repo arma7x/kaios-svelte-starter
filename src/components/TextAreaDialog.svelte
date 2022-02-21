@@ -73,6 +73,11 @@
     returnValue = evt.target.value;
   }
 
+  function onFocus(evt) {
+    evt.target.focus();
+    evt.target.selectionStart = evt.target.selectionEnd = (evt.target.value.length || evt.target.value.length);
+  }
+
   onMount(() => {
     console.log('onMount', title);
     navInstance.attachListener();
@@ -107,7 +112,7 @@
   <div class="kai-dialog-content">
     <div class="kai-dialog-header">{title}</div>
     <div class="kai-dialog-body">
-      <TextAreaField label="{undefined}" placeholder="{placeholder}" rows={rows} value="{value}" type="{type}" {onInput} />
+      <TextAreaField label="{undefined}" placeholder="{placeholder}" rows={rows} value="{value}" type="{type}" {onInput} {onFocus}/>
     </div>
   </div>
 </div>

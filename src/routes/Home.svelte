@@ -261,7 +261,7 @@
       target: document.body,
       props: {
         title: 'Multi Selector',
-        focusIndex: 0,
+        focusIndex: optionMenuIndex,
         options: JSON.parse(JSON.stringify(multiSelectorOptions)),
         softKeyLeftText: 'Cancel',
         softKeyRightText: 'Done',
@@ -518,9 +518,9 @@
     <span slot="rightWidget"></span>
   </ListView>
   <Separator title="Dialog" />
-  <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu & focus on index 2" onClick={openOptionMenu}/>
-  <ListView className="{navClass}" title="Single Selector" subtitle="Click to open single selector & focus on index 2" onClick={openSingleSelector}/>
-  <ListView className="{navClass}" title="Multi Selector" subtitle="Click to open multi selector & focus on index 2" onClick={openMultiSelector}/>
+  <ListView className="{navClass}" title="Option Menu" subtitle="Click to open option menu & focus on index {optionMenuIndex}" onClick={openOptionMenu}/>
+  <ListView className="{navClass}" title="Single Selector" subtitle="Click to open single selector & focus on current" onClick={openSingleSelector}/>
+  <ListView className="{navClass}" title="Multi Selector" subtitle="Click to open multi selector & focus on index {optionMenuIndex}" onClick={openMultiSelector}/>
   <Separator title="Input" />
   <TextInputField className="{navClass}" label="TextInput" placeholder="Placeholder" value="Value" type="text" {onInput} {onFocus} {onBlur} />
   <TextAreaField className="{navClass}" label="TextArea" placeholder="Placeholder" value="Value" type="text" rows={4} {onInput} {onFocus} {onBlur}/>

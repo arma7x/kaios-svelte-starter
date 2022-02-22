@@ -271,18 +271,21 @@
     background-color: #cacaca;
   }
   .kai-dialog > .kai-dialog-content > .kai-dialog-body > .date-picker-row > .date-column > .date-block {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+    display:block;
+    vertical-align: middle;
     text-align: center;
     padding: 10px 0;
-    min-height: 38px;
+    height: 38px;
+    color: #323232;
+    font-size: 15px;
   }
   .kai-dialog > .kai-dialog-content > .kai-dialog-body > .date-picker-row > .date-column > .date-block.navable {
     color: var(--themeColor);
+    font-size: 17px;
   }
   .kai-dialog > .kai-dialog-content > .kai-dialog-body > .date-picker-row > .date-column > .date-block.navable.focus {
     color: #ffffff;
     background-color: var(--themeColor);
+    font-weight: bold;
   }
 </style>

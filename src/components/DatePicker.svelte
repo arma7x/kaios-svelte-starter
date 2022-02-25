@@ -79,12 +79,19 @@
     } else {
       firstDayOfMonth.setDate(thisDay);
     }
+    firstDayOfMonth.setHours(date.getHours());
+    firstDayOfMonth.setMinutes(date.getMinutes());
+    firstDayOfMonth.setSeconds(date.getSeconds());
     date = firstDayOfMonth;
     setDay(0);
   }
 
   function setYear(move) {
-    date.setFullYear(date.getFullYear() + move);
+    const year = date.getFullYear() + move;
+    const isLeap = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+    if (date.getDate() === 29 && date.getMonth() === 1 && !isLeap)
+      date.setDate(date.getDate() - 1);
+    date.setFullYear(year);
     const cursor = navClasses[2];
     cursor.previousElementSibling.textContent = date.getFullYear() - 1;
     cursor.textContent = date.getFullYear();

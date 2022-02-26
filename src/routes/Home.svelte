@@ -204,6 +204,7 @@
         },
         onEnter: (evt, scope) => {
           console.log('onEnter', scope);
+          optionMenuIndex = scope.index;
           optionMenu.$destroy();
         },
         onBackspace: (evt, scope) => {
@@ -217,7 +218,6 @@
         },
         onClosed: (scope) => {
           console.log(scope);
-          optionMenuIndex = scope.index;
           navInstance.attachListener();
           optionMenu = null;
         }

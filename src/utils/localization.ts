@@ -1,5 +1,4 @@
 import { sprintf } from 'sprintf-js';
-import { writable } from 'svelte/store';
 
 interface Translation {
   [key: string]: string;
@@ -14,19 +13,16 @@ class Localization {
   locales: Locale = {};
   namespace: string;
   defaultLocale: string;
-  translations: any;
 
   constructor(locale: string, namespace: string) {
     this.defaultLocale = locale;
     this.namespace = namespace;
-    this.translations = writable({});
     this.loadLocale(this.defaultLocale);
   }
 
   loadLocale(locale: string, cache: boolean = true, origin: string = document.location.origin): boolean {
     if (cache && this.locales[locale] != null) {
       this.defaultLocale = locale;
-      this.translations = this.locales[this.defaultLocale];
       return true;
     } else {
       const url = [];
@@ -40,7 +36,6 @@ class Localization {
       if (request.readyState === 4 && request.status >= 200 && request.status <= 399) {
         this.defaultLocale = locale;
         this.locales[this.defaultLocale] = JSON.parse(request.responseText);
-        this.translations = this.locales[this.defaultLocale];
         return true;
       } else if (request.readyState === 4) {
         return false;

@@ -5,7 +5,7 @@
   import { onMount, onDestroy } from 'svelte';
 
   const navClass: string = 'homeNav';
-
+  let locale: string;
   export let location: any;
   export let navigate: any;
   export let getParentProp: Function;
@@ -39,6 +39,11 @@
   let textAreaDialog: TextAreaDialog;
   let progressValue: number = 0;
   let sliderValue: number = 20;
+  let locales:any = [
+    { title: 'English - United State', subtitle: 'en-US' },
+    { title: 'Japanese', subtitle: 'jp-JP' },
+  ];
+  let localeMenu: OptionMenu;
 
   let navOptions = {
     verticalNavClass: navClass,
@@ -486,8 +491,50 @@
     console.log(scope);
   }
 
+  function changeLocale() {
+    const idx = locales.findIndex((o) => {
+      return o.subtitle === locale || 0;
+    })
+    localeMenu = new OptionMenu({
+      target: document.body,
+      props: {
+        title: getParentProp().localization.lang('select_locale'),
+        focusIndex: idx,
+        options: locales,
+        softKeyCenterText: 'select',
+        onSoftkeyRight: (evt, scope) => {
+          console.log('onSoftkeyRight', scope);
+        },
+        onSoftkeyLeft: (evt, scope) => {
+          console.log('onSoftkeyRight', scope);
+        },
+        onEnter: (evt, scope) => {
+          console.log('onEnter', scope);
+          getParentProp().localization.loadLocale(scope.selected.subtitle);
+          locale = getParentProp().localization.defaultLocale;
+          localeMenu.$destroy();
+        },
+        onBackspace: (evt, scope) => {
+          console.log('onBackspace', scope);
+          evt.preventDefault();
+          evt.stopPropagation();
+          localeMenu.$destroy();
+        },
+        onOpened: () => {
+          navInstance.detachListener();
+        },
+        onClosed: (scope) => {
+          console.log(scope);
+          navInstance.attachListener();
+          localeMenu = null;
+        }
+      }
+    });
+  }
+
   onMount(() => {
     console.log('onMount', name);
+    locale = getParentProp().localization.defaultLocale;
     const { appBar, softwareKey } = getParentProp();
     appBar.setTitleText(name);
     softwareKey.setText({ left: `Dialog L`, center: `${name} C`, right: `Toast R` });
@@ -502,7 +549,8 @@
 </script>
 
 <main id="home-screen" data-pad-top="28" data-pad-bottom="30">
-  <ListView className="{navClass}" title="Room" subtitle="Goto room screen" onClick={() => onClickHandler('room')}/>
+  <ListView className="{navClass}" title="{getParentProp().localization.langByLocale('hello', locale, 'Svelte')}" subtitle="Goto room screen" onClick={() => onClickHandler('room')}/>
+  <ListView className="{navClass}" title="{getParentProp().localization.langByLocale('change_locale', locale)}" subtitle="{getParentProp().localization.langByLocale('change_locale_subtitle', locale)}" onClick={changeLocale}/>
   <Separator title="Progress" />
   <ListView className="{navClass}" title="Loading Bar" subtitle="Display loading bar & freeze keydown for 3 seconds" onClick={showLoadingBar} />
   <ListView key="linear-progress" className="{navClass}">

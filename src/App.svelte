@@ -5,15 +5,12 @@
   import { onMount, onDestroy } from 'svelte';
   import { Localization } from './utils/localization';
 
-  const localization = new Localization('en-US', 'langs');
-  console.log(localization.lang('hello', 'Svelte'));
-  localization.loadLocale('jp-JP');
-  console.log(localization.lang('hello', 'Svelte'));
+  export let localization = new Localization('en-US', 'langs');
   export let appBar;
   export let softwareKey;
 
   export const getParentProp = () => {
-    return {appBar, softwareKey};
+    return {appBar, softwareKey, localization};
   }
 
   onMount(() => {

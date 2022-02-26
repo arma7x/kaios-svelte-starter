@@ -1,4 +1,5 @@
-import { sprintf } from 'sprintf-js'; // https://github.com/alexei/sprintf.js
+import { sprintf } from 'sprintf-js';
+import { writable } from 'svelte/store';
 
 interface Translation {
   [key: string]: string;
@@ -13,17 +14,19 @@ class Localization {
   locales: Locale = {};
   namespace: string;
   defaultLocale: string;
+  translations: any;
 
   constructor(locale: string, namespace: string) {
     this.defaultLocale = locale;
     this.namespace = namespace;
+    this.translations = writable({});
     this.loadLocale(this.defaultLocale);
   }
 
   loadLocale(locale: string, cache: boolean = true, origin: string = document.location.origin): boolean {
     if (cache && this.locales[locale] != null) {
       this.defaultLocale = locale;
-      console.log('Cache', this.locales[this.defaultLocale]);
+      this.translations = this.locales[this.defaultLocale];
       return true;
     } else {
       const url = [];
@@ -31,14 +34,13 @@ class Localization {
       if (this.namespace !== '' && origin === document.location.origin)
         url.push(this.namespace);
       url.push(`${locale}.json`);
-      console.log('Locale URL:', url.join('/'));
       const request = new XMLHttpRequest();
       request.open('GET', url.join('/'), false);
       request.send(null);
       if (request.readyState === 4 && request.status >= 200 && request.status <= 399) {
         this.defaultLocale = locale;
         this.locales[this.defaultLocale] = JSON.parse(request.responseText);
-        console.log('Lazy Loading:', this.locales[this.defaultLocale]);
+        this.translations = this.locales[this.defaultLocale];
         return true;
       } else if (request.readyState === 4) {
         return false;
@@ -51,6 +53,19 @@ class Localization {
     if (line == null)
       return false;
     return sprintf(line, ...args);
+  }
+
+  langByLocale(key: string, locale: string, ...args: any): string | boolean {
+    if (this.locales[locale] == null)
+      return false;
+    const line = this.locales[locale][key];
+    if (line == null)
+      return false;
+    return sprintf(line, ...args);
+  }
+
+  getLocaleTranslation(locale: string): Translation {
+    return this.locales[locale];
   }
 
 }

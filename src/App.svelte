@@ -3,7 +3,12 @@
   import { AppBar, SoftwareKey } from './components';
   import { Home, Room } from './routes';
   import { onMount, onDestroy } from 'svelte';
+  import { Localization } from './utils/localization';
 
+  const localization = new Localization('en-US', 'langs');
+  console.log(localization.lang('hello', 'Svelte'));
+  localization.loadLocale('jp-JP');
+  console.log(localization.lang('hello', 'Svelte'));
   export let appBar;
   export let softwareKey;
 

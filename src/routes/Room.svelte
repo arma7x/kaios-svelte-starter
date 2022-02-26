@@ -5,7 +5,7 @@
 
   export let location: any;
   export let navigate: any;
-  export let getParentProp: Function;
+  export let getAppProp: Function;
 
   let name: string = 'Room';
 
@@ -32,7 +32,7 @@
 
   onMount(() => {
     console.log('onMount', name);
-    const { appBar, softwareKey } = getParentProp();
+    const { appBar, softwareKey } = getAppProp();
     appBar.setTitleText(name);
     softwareKey.setText({ left: `${name} L`, center: `${name} C`, right: `${name} R` });
     navInstance.attachListener();

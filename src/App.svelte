@@ -9,7 +9,7 @@
   export let appBar;
   export let softwareKey;
 
-  export const getParentProp = () => {
+  export const getAppProp = () => {
     return {appBar, softwareKey, localization};
   }
 
@@ -24,10 +24,10 @@
   <AppBar bind:this={appBar} />
   <main>
     <Route primary={false} path="index.html" let:location let:navigate>
-      <svelte:component this="{Home}" {location} {navigate} {getParentProp}/>
+      <svelte:component this="{Home}" {location} {navigate} {getAppProp}/>
     </Route>
     <Route path="room" let:location let:navigate>
-      <svelte:component this="{Room}" {location} {navigate} {getParentProp}/>
+      <svelte:component this="{Room}" {location} {navigate} {getAppProp}/>
     </Route>
   </main>
   <SoftwareKey bind:this={softwareKey} />

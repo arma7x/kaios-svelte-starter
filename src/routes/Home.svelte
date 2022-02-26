@@ -8,7 +8,7 @@
   let locale: string;
   export let location: any;
   export let navigate: any;
-  export let getParentProp: Function;
+  export let getAppProp: Function;
 
   let name: string = 'Home';
   let dialog: Dialog;
@@ -498,7 +498,7 @@
     localeMenu = new OptionMenu({
       target: document.body,
       props: {
-        title: getParentProp().localization.lang('select_locale'),
+        title: getAppProp().localization.lang('select_locale'),
         focusIndex: idx,
         options: locales,
         softKeyCenterText: 'select',
@@ -510,8 +510,8 @@
         },
         onEnter: (evt, scope) => {
           console.log('onEnter', scope);
-          getParentProp().localization.loadLocale(scope.selected.subtitle);
-          locale = getParentProp().localization.defaultLocale;
+          getAppProp().localization.loadLocale(scope.selected.subtitle);
+          locale = getAppProp().localization.defaultLocale;
           localeMenu.$destroy();
         },
         onBackspace: (evt, scope) => {
@@ -534,8 +534,8 @@
 
   onMount(() => {
     console.log('onMount', name);
-    locale = getParentProp().localization.defaultLocale;
-    const { appBar, softwareKey } = getParentProp();
+    locale = getAppProp().localization.defaultLocale;
+    const { appBar, softwareKey } = getAppProp();
     appBar.setTitleText(name);
     softwareKey.setText({ left: `Dialog L`, center: `${name} C`, right: `Toast R` });
     navInstance.attachListener();
@@ -549,8 +549,8 @@
 </script>
 
 <main id="home-screen" data-pad-top="28" data-pad-bottom="30">
-  <ListView className="{navClass}" title="{getParentProp().localization.langByLocale('hello', locale, 'Svelte')}" subtitle="Goto room screen" onClick={() => onClickHandler('room')}/>
-  <ListView className="{navClass}" title="{getParentProp().localization.langByLocale('change_locale', locale)}" subtitle="{getParentProp().localization.langByLocale('change_locale_subtitle', locale)}" onClick={changeLocale}/>
+  <ListView className="{navClass}" title="{getAppProp().localization.langByLocale('hello', locale, 'Svelte')}" subtitle="Goto room screen" onClick={() => onClickHandler('room')}/>
+  <ListView className="{navClass}" title="{getAppProp().localization.langByLocale('change_locale', locale)}" subtitle="{getAppProp().localization.langByLocale('change_locale_subtitle', locale)}" onClick={changeLocale}/>
   <Separator title="Progress" />
   <ListView className="{navClass}" title="Loading Bar" subtitle="Display loading bar & freeze keydown for 3 seconds" onClick={showLoadingBar} />
   <ListView key="linear-progress" className="{navClass}">

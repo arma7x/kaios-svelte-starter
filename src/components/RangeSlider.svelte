@@ -32,7 +32,7 @@
   <div class="kai-range-slider-body">
     <div class="kai-range-slider-track"></div>
     <div class="kai-range-slider-track-shadow"></div>
-    <div class="kai-range-slider-loaded" style="width:calc({progress}%);border-radius:4px;"></div>
+    <div class="kai-range-slider-loaded" style="width:calc({progress}%);border-radius:4px 0px 0px 4px;"></div>
     <div class="kai-range-slider-thumb" style="left:calc({progress}%);"></div>
   </div>
 </div>
@@ -94,6 +94,7 @@
     border-radius: 50%;
     top: -7px;
     position: absolute;
+    z-index: 1;
   }
 
   :global(.kai-list-view.focus > .kai-range-slider-content > .kai-range-slider-body > .kai-range-slider-track) {

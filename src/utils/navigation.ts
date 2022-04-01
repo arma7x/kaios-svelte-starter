@@ -143,7 +143,9 @@ class KaiNavigator {
       dispatchScroll(cursor.parentElement, cursor.offsetTop - ((cursor.parentElement.clientHeight - marginTop - marginBottom) / 2));
     }
     if (['INPUT', 'TEXTAREA'].indexOf(document.activeElement.tagName) > -1) {
-      document.activeElement.blur();
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
     }
     const keys = Object.keys(cursor.children);
     for (var k in keys) {

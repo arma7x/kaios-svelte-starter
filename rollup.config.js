@@ -72,6 +72,9 @@ export default {
           '@babel/preset-env',
           {
             targets: { firefox: '48' },
+            exclude: [
+              '@babel/plugin-transform-regenerator'
+            ]
           },
         ],
       ],
@@ -80,6 +83,7 @@ export default {
         [
           '@babel/plugin-transform-runtime',
           {
+            "regenerator": false,
             useESModules: true,
           },
         ],

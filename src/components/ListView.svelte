@@ -71,7 +71,7 @@
   .kai-list-view.focus > .kai-list-view-content > p,
   .kai-list-view.focus > .kai-list-view-content > small,
   .kai-list-view.focus > span {
-    background-color: #ff3e00;
+    background-color: var(--themeColor);
     color: #ffffff;
   }
 </style>

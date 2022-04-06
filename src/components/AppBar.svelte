@@ -19,7 +19,7 @@
     height: 28px;
     padding: 0 4px;
     color: #ffffff;
-    background-color: #ff3e00;
+    background-color: var(--themeColor);
     font-weight: normal;
     text-transform: uppercase;
   }

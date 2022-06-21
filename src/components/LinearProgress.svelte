@@ -1,9 +1,7 @@
 <script lang="ts">
 
-  export let key:any = '';
   export let progressType:number = 0; // 0:NONE, 1:PERCENTAGE, 2:COUNTER
   export let label: string = '';
-  export let className:string = '';
   export let value: number = 0;
   export let min: number = 0;
   export let max: number = 100;
@@ -53,7 +51,7 @@
 
   .kai-linear-progress-content > .kai-linear-progress-body {
     position: relative;
-    width: 100%; 
+    width: 100%;
   }
 
   .kai-linear-progress-content > .kai-linear-progress-body > .kai-linear-progress-track {

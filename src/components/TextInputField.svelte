@@ -11,9 +11,9 @@
 
 <div class="kai-text-input {className}">
   {#if label}
-  <label>{label}</label>
+  <label for={label.split(' ').join('-')}>{label}</label>
   {/if}
-  <input name={label} type={type} value={value} placeholder={placeholder} on:input={onInput} on:focus={onFocus} on:blur={onBlur}/>
+  <input id={label.split(' ').join('-')} name={label} type={type} value={value} placeholder={placeholder} on:input={onInput} on:focus={onFocus} on:blur={onBlur}/>
 </div>
 
 <style>
@@ -25,14 +25,14 @@
     width: 100%;
     padding: 8px;
   }
-  
+
   .kai-text-input > input {
     padding: 0 5px;
     margin: 0;
     width: 100%;
     height: 40px;
   }
-  
+
   .kai-text-input > label {
     font-size: 14px;
   }
@@ -40,7 +40,7 @@
   .kai-text-input.focus {
     background-color: var(--themeColor);
   }
-  
+
   .kai-text-input.focus > label {
     color: #ffffff;
   }

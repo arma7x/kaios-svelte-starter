@@ -71,8 +71,8 @@
     display:flex;
     flex-direction:row;
   }
-  #room-screen > .vertical > .vertClass
-  #room-screen > .vertical > .horizontal {
+  :global(#room-screen > .vertical > .vertClass)
+  :global(#room-screen > .vertical > .horizontal) {
     background-color: #ffffff;
     color: #000000;
   }

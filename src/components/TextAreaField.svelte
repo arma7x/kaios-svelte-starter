@@ -12,9 +12,9 @@
 
 <div class="kai-text-area {className}">
   {#if label}
-  <label>{label}</label>
+  <label for={label.split(' ').join('-')}>{label}</label>
   {/if}
-  <textarea name={label} type={type} value={value} placeholder={placeholder} rows={rows} on:input={onInput} on:focus={onFocus} on:blur={onBlur}></textarea>
+  <textarea id={label.split(' ').join('-')} name={label} type={type} value={value} placeholder={placeholder} rows={rows} on:input={onInput} on:focus={onFocus} on:blur={onBlur}></textarea>
 </div>
 
 <style>
@@ -26,13 +26,13 @@
     width: 100%;
     padding: 8px;
   }
-  
+
   .kai-text-area > textarea {
     padding: 5px;
     margin: 0;
     width: 100%;
   }
-  
+
   .kai-text-area > label {
     font-size: 14px;
   }
@@ -40,7 +40,7 @@
   .kai-text-area.focus {
     background-color: var(--themeColor);
   }
-  
+
   .kai-text-area.focus > label {
     color: #ffffff;
   }

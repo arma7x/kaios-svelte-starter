@@ -31,10 +31,6 @@
     -webkit-animation: start 0.3s ease-in;
             animation: start 0.3s ease-in;
   }
-  .kai-loading-bar.small {
-    width: 15%;
-    height: 2px;
-  }
   .kai-loading-bar .bar {
     position: absolute;
     background: #ffffff;

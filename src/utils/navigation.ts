@@ -6,6 +6,7 @@ function keydownEventHandler(evt, scope) {
       break;
     case 'SoftLeft':
     case 'PageUp':
+    case 'Shift':
       scope.softkeyLeftListener(evt);
       evt.preventDefault();
       break;
@@ -89,7 +90,7 @@ class KaiNavigator {
   softkeyRightListener: Function = (evt) => {};
   enterListener: Function = (evt) => {};
   backspaceListener: Function = (evt) => {};
- 
+
   constructor(opts = {}) {
     for(const x in opts) {
       if (typeof opts[x] === 'function')
@@ -150,8 +151,10 @@ class KaiNavigator {
     const keys = Object.keys(cursor.children);
     for (var k in keys) {
       if (['INPUT', 'TEXTAREA'].indexOf(cursor.children[k].tagName) > -1) {
-        cursor.children[k].focus();
-        cursor.children[k].selectionStart = cursor.children[k].selectionEnd = (cursor.children[k].value.length || cursor.children[k].value.length);
+        setTimeout(() => {
+          cursor.children[k].focus();
+          cursor.children[k].selectionStart = cursor.children[k].selectionEnd = (cursor.children[k].value.length || cursor.children[k].value.length);
+        }, 100);
         break;
       }
     }

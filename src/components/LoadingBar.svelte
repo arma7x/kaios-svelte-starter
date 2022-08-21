@@ -20,7 +20,7 @@
 
 <style>
   .kai-loading-bar {
-    background-color: var(--themeColorTransparent);
+    background-color: var(--themeColorLight);
     height: 5px;
     top: 0;
     position: fixed;

@@ -1,5 +1,7 @@
 :root {
   --themeColor: #ff3e00;
+  --themeColorLight: #ECE8F2;
+  --themeColorTransparent: rgba(255, 62, 0, 0.1);
   --toastContainerTop: 26px;
   --toastContainerRight: 0;
   --toastWidth: 100vw;

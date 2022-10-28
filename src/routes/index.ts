@@ -1,7 +1,9 @@
-import Home from "./Home.svelte";
+import Welcome from "./Welcome.svelte";
+import Demo from "./Demo.svelte";
 import Room from "./Room.svelte";
 
 export {
-  Home,
+  Welcome,
+  Demo,
   Room
 }

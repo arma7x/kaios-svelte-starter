@@ -10,7 +10,7 @@
   export let navigate: any;
   export let getAppProp: Function;
 
-  let name: string = 'Home';
+  let name: string = 'Demo';
   let dialog: Dialog;
   let optionMenu: OptionMenu;
   let optionMenuIndex:number = 0;
@@ -70,6 +70,8 @@
     },
     backspaceListener: function(evt) {
       console.log('backspaceListener', name);
+      evt.preventDefault();
+      goto(-1);
     },
     arrowLeftListener: function(evt) {
       console.log('arrowLeftListener', name);

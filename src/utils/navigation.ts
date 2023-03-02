@@ -2,7 +2,12 @@ function keydownEventHandler(evt, scope) {
   switch (evt.key) {
     case 'Backspace':
     case 'EndCall':
-      scope.backspaceListener(evt);
+      if (['INPUT', 'TEXTAREA'].indexOf(evt.target.tagName) > -1 && evt.target.value == '') {
+        evt.preventDefault();
+        evt.stopPropagation();
+      } else {
+        scope.backspaceListener(evt);
+      }
       break;
     case 'SoftLeft':
     case 'PageUp':

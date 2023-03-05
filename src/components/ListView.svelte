@@ -39,7 +39,7 @@
     justify-content: center;
     align-items: start;
     padding: 0px 4px 0px 0px;
-    width: 93%;
+    width: 100%;
   }
 
   .kai-list-view > .kai-list-view-content > p {
